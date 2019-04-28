@@ -1,5 +1,6 @@
 class Node(object):
-    def __init__(self, node_type, children=None, leaf=None):
+    def __init__(self, node_type, children=None, leaf=None, line=None):
+        self.line = line
         self.children = children
         if children is None:
             self.children = []
@@ -8,8 +9,8 @@ class Node(object):
 
 
 class Function(Node):
-    def __init__(self, name, args):
-        super().__init__(self.__class__, [args], name)
+    def __init__(self, name, args, line):
+        super().__init__(self.__class__, [args], name, line)
         self.name = name
         self.args = args
 
@@ -18,8 +19,8 @@ class Function(Node):
 
 
 class Variable(Node):
-    def __init__(self, name):
-        super().__init__(self.__class__, leaf=name)
+    def __init__(self, name, line):
+        super().__init__(self.__class__, leaf=name, line=line)
         self.name = name
 
     def __repr__(self):
@@ -37,7 +38,7 @@ class If(Node):
             self.leaf = self.leaf[:2]
 
     def __repr__(self):
-        return f'if {self.cond}: {self.if_block}' if self.else_block is Node else f'if {self.cond}: {self.if_block} else {self.else_block}'
+        return f'if {self.cond}: {self.if_block}' if self.else_block is Node else f'if {self.cond}: {self.if_block} else {self.else_block} '
 
 
 class While(Node):
@@ -72,24 +73,24 @@ class For(Node):
 
 
 class Break(Node):
-    def __init__(self):
-        super().__init__(self.__class__, leaf='break')
+    def __init__(self, line):
+        super().__init__(self.__class__, leaf='break', line=line)
 
     def __repr__(self):
         return 'break'
 
 
 class Continue(Node):
-    def __init__(self):
-        super().__init__(self.__class__, leaf='continue')
+    def __init__(self, line):
+        super().__init__(self.__class__, leaf='continue', line=line)
 
     def __repr__(self):
         return 'continue'
 
 
 class Return(Node):
-    def __init__(self, result):
-        super().__init__(self.__class__, [result], 'break')
+    def __init__(self, result, line):
+        super().__init__(self.__class__, [result], 'break', line=line)
         self.result = result
 
     def __repr__(self):
@@ -97,8 +98,8 @@ class Return(Node):
 
 
 class Print(Node):
-    def __init__(self, expression):
-        super().__init__(self.__class__, [expression], 'print')
+    def __init__(self, expression, line):
+        super().__init__(self.__class__, [expression], 'print', line=line)
         self.expression = expression
 
     def __repr__(self):
@@ -106,8 +107,8 @@ class Print(Node):
 
 
 class TensorID(Node):
-    def __init__(self, variable, key):
-        super().__init__(self.__class__, [variable, key], 'ref')
+    def __init__(self, variable, key, line):
+        super().__init__(self.__class__, [variable, key], 'ref', line)
         self.variable = variable
         self.key = key
 
@@ -143,8 +144,8 @@ class Instruction(Node):
 
 
 class Tensor(Node):
-    def __init__(self, rows):
-        super().__init__(self.__class__, [rows], "tensor")
+    def __init__(self, rows,line):
+        super().__init__(self.__class__, [rows], "tensor",line=line)
         self.rows = rows
 
     def __repr__(self):
@@ -191,8 +192,8 @@ class Seq(Node):
 
 
 class BinaryExpression(Node):
-    def __init__(self, left, op, right):
-        super().__init__(self.__class__, [left, right], op)
+    def __init__(self, left, op, right,line):
+        super().__init__(self.__class__, [left, right], op,line=line)
         self.op = op
         self.left = left
         self.right = right

@@ -56,68 +56,67 @@ Rule 46    keyword -> RETURN expression
 Rule 47    body -> instruction
 Rule 48    body -> { block }
 Rule 49    relation -> expression comp_operator expression
-Rule 50    expression -> relation
-Rule 51    comp_operator -> >
-Rule 52    comp_operator -> <
-Rule 53    comp_operator -> EQ
-Rule 54    comp_operator -> GEQ
-Rule 55    comp_operator -> LEQ
-Rule 56    comp_operator -> NEQ
-Rule 57    if_statement -> IF ( relation ) body
-Rule 58    if_statement -> IF ( relation ) body ELSE body
-Rule 59    loop_statement -> while_statement
-Rule 60    loop_statement -> for_statement
-Rule 61    while_statement -> WHILE ( relation ) body
-Rule 62    for_statement -> FOR ID = range body
-Rule 63    range -> expression : expression
-Rule 64    assign_op -> =
-Rule 65    assign_op -> SUMASSIGN
-Rule 66    assign_op -> DIVASSIGN
-Rule 67    assign_op -> SUBASSIGN
-Rule 68    assign_op -> MULASSIGN
+Rule 50    comp_operator -> >
+Rule 51    comp_operator -> <
+Rule 52    comp_operator -> EQ
+Rule 53    comp_operator -> GEQ
+Rule 54    comp_operator -> LEQ
+Rule 55    comp_operator -> NEQ
+Rule 56    if_statement -> IF ( relation ) body
+Rule 57    if_statement -> IF ( relation ) body ELSE body
+Rule 58    loop_statement -> while_statement
+Rule 59    loop_statement -> for_statement
+Rule 60    while_statement -> WHILE ( relation ) body
+Rule 61    for_statement -> FOR ID = range body
+Rule 62    range -> expression : expression
+Rule 63    assign_op -> =
+Rule 64    assign_op -> SUMASSIGN
+Rule 65    assign_op -> DIVASSIGN
+Rule 66    assign_op -> SUBASSIGN
+Rule 67    assign_op -> MULASSIGN
 
 Terminals, with rules where they appear
 
 '                    : 28 29
-(                    : 29 30 39 57 58 61
-)                    : 29 30 39 57 58 61
+(                    : 29 30 39 56 57 60
+)                    : 29 30 39 56 57 60
 *                    : 33
 +                    : 31
 ,                    : 15
 -                    : 27 32
 /                    : 34
-:                    : 63
+:                    : 62
 ;                    : 6 25
-<                    : 52
-=                    : 62 64
->                    : 51
+<                    : 51
+=                    : 61 63
+>                    : 50
 BREAK                : 44
 COMMENT              : 
 CONTINUE             : 45
-DIVASSIGN            : 66
+DIVASSIGN            : 65
 DOTDIV               : 36
 DOTMUL               : 37
 DOTSUB               : 38
 DOTSUM               : 35
-ELSE                 : 58
-EQ                   : 53
+ELSE                 : 57
+EQ                   : 52
 EYE                  : 40
 FLOAT                : 20
-FOR                  : 62
-GEQ                  : 54
-ID                   : 12 14 18 28 62
-IF                   : 57 58
+FOR                  : 61
+GEQ                  : 53
+ID                   : 12 14 18 28 61
+IF                   : 56 57
 INTEGER              : 19
-LEQ                  : 55
-MULASSIGN            : 68
-NEQ                  : 56
+LEQ                  : 54
+MULASSIGN            : 67
+NEQ                  : 55
 ONES                 : 42
 PRINT                : 43
 RETURN               : 46
 STRING               : 21
-SUBASSIGN            : 67
-SUMASSIGN            : 65
-WHILE                : 61
+SUBASSIGN            : 66
+SUMASSIGN            : 64
+WHILE                : 60
 ZEROS                : 41
 [                    : 14 24
 ]                    : 14 24
@@ -131,25 +130,25 @@ assign_expression    : 9
 assign_op            : 11
 base_instruction     : 6
 block                : 1 2 3 3 4 48
-body                 : 57 58 58 61 62
+body                 : 56 57 57 60 61
 comp_operator        : 49
-expression           : 11 15 16 27 29 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 46 49 49 63 63
-for_statement        : 60
+expression           : 11 15 16 27 29 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 38 39 46 49 49 62 62
+for_statement        : 59
 function             : 39
 if_statement         : 7
 instruction          : 4 5 47
 keyword              : 10
 loop_statement       : 8
 program              : 0
-range                : 62
-relation             : 50 57 58 61
+range                : 61
+relation             : 56 57 60
 result               : 17
 rows                 : 24 25
 sequence             : 14 15 25 26 43
 tensor               : 22
 tensor_id            : 13 23
 variable             : 11
-while_statement      : 59
+while_statement      : 58
 
 Parsing method: LALR
 
@@ -166,17 +165,17 @@ state 0
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
@@ -220,17 +219,17 @@ state 2
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
@@ -269,17 +268,17 @@ state 3
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
@@ -382,56 +381,56 @@ state 9
 
 state 10
 
-    (57) if_statement -> IF . ( relation ) body
-    (58) if_statement -> IF . ( relation ) body ELSE body
+    (56) if_statement -> IF . ( relation ) body
+    (57) if_statement -> IF . ( relation ) body ELSE body
 
     (               shift and go to state 26
 
 
 state 11
 
-    (59) loop_statement -> while_statement .
+    (58) loop_statement -> while_statement .
 
-    {               reduce using rule 59 (loop_statement -> while_statement .)
-    IF              reduce using rule 59 (loop_statement -> while_statement .)
-    PRINT           reduce using rule 59 (loop_statement -> while_statement .)
-    BREAK           reduce using rule 59 (loop_statement -> while_statement .)
-    CONTINUE        reduce using rule 59 (loop_statement -> while_statement .)
-    RETURN          reduce using rule 59 (loop_statement -> while_statement .)
-    WHILE           reduce using rule 59 (loop_statement -> while_statement .)
-    FOR             reduce using rule 59 (loop_statement -> while_statement .)
-    ID              reduce using rule 59 (loop_statement -> while_statement .)
-    $end            reduce using rule 59 (loop_statement -> while_statement .)
-    }               reduce using rule 59 (loop_statement -> while_statement .)
-    ELSE            reduce using rule 59 (loop_statement -> while_statement .)
+    {               reduce using rule 58 (loop_statement -> while_statement .)
+    IF              reduce using rule 58 (loop_statement -> while_statement .)
+    PRINT           reduce using rule 58 (loop_statement -> while_statement .)
+    BREAK           reduce using rule 58 (loop_statement -> while_statement .)
+    CONTINUE        reduce using rule 58 (loop_statement -> while_statement .)
+    RETURN          reduce using rule 58 (loop_statement -> while_statement .)
+    WHILE           reduce using rule 58 (loop_statement -> while_statement .)
+    FOR             reduce using rule 58 (loop_statement -> while_statement .)
+    ID              reduce using rule 58 (loop_statement -> while_statement .)
+    $end            reduce using rule 58 (loop_statement -> while_statement .)
+    }               reduce using rule 58 (loop_statement -> while_statement .)
+    ELSE            reduce using rule 58 (loop_statement -> while_statement .)
 
 
 state 12
 
-    (60) loop_statement -> for_statement .
+    (59) loop_statement -> for_statement .
 
-    {               reduce using rule 60 (loop_statement -> for_statement .)
-    IF              reduce using rule 60 (loop_statement -> for_statement .)
-    PRINT           reduce using rule 60 (loop_statement -> for_statement .)
-    BREAK           reduce using rule 60 (loop_statement -> for_statement .)
-    CONTINUE        reduce using rule 60 (loop_statement -> for_statement .)
-    RETURN          reduce using rule 60 (loop_statement -> for_statement .)
-    WHILE           reduce using rule 60 (loop_statement -> for_statement .)
-    FOR             reduce using rule 60 (loop_statement -> for_statement .)
-    ID              reduce using rule 60 (loop_statement -> for_statement .)
-    $end            reduce using rule 60 (loop_statement -> for_statement .)
-    }               reduce using rule 60 (loop_statement -> for_statement .)
-    ELSE            reduce using rule 60 (loop_statement -> for_statement .)
+    {               reduce using rule 59 (loop_statement -> for_statement .)
+    IF              reduce using rule 59 (loop_statement -> for_statement .)
+    PRINT           reduce using rule 59 (loop_statement -> for_statement .)
+    BREAK           reduce using rule 59 (loop_statement -> for_statement .)
+    CONTINUE        reduce using rule 59 (loop_statement -> for_statement .)
+    RETURN          reduce using rule 59 (loop_statement -> for_statement .)
+    WHILE           reduce using rule 59 (loop_statement -> for_statement .)
+    FOR             reduce using rule 59 (loop_statement -> for_statement .)
+    ID              reduce using rule 59 (loop_statement -> for_statement .)
+    $end            reduce using rule 59 (loop_statement -> for_statement .)
+    }               reduce using rule 59 (loop_statement -> for_statement .)
+    ELSE            reduce using rule 59 (loop_statement -> for_statement .)
 
 
 state 13
 
     (11) assign_expression -> variable . assign_op expression
-    (64) assign_op -> . =
-    (65) assign_op -> . SUMASSIGN
-    (66) assign_op -> . DIVASSIGN
-    (67) assign_op -> . SUBASSIGN
-    (68) assign_op -> . MULASSIGN
+    (63) assign_op -> . =
+    (64) assign_op -> . SUMASSIGN
+    (65) assign_op -> . DIVASSIGN
+    (66) assign_op -> . SUBASSIGN
+    (67) assign_op -> . MULASSIGN
 
     =               shift and go to state 28
     SUMASSIGN       shift and go to state 29
@@ -461,7 +460,6 @@ state 14
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -470,28 +468,26 @@ state 14
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
     sequence                       shift and go to state 33
     expression                     shift and go to state 34
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 15
 
@@ -525,7 +521,6 @@ state 17
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -534,40 +529,38 @@ state 17
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 50
+    expression                     shift and go to state 49
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 18
 
-    (61) while_statement -> WHILE . ( relation ) body
+    (60) while_statement -> WHILE . ( relation ) body
 
-    (               shift and go to state 51
+    (               shift and go to state 50
 
 
 state 19
 
-    (62) for_statement -> FOR . ID = range body
+    (61) for_statement -> FOR . ID = range body
 
-    ID              shift and go to state 52
+    ID              shift and go to state 51
 
 
 state 20
@@ -580,7 +573,7 @@ state 20
     DIVASSIGN       reduce using rule 12 (variable -> ID .)
     SUBASSIGN       reduce using rule 12 (variable -> ID .)
     MULASSIGN       reduce using rule 12 (variable -> ID .)
-    [               shift and go to state 53
+    [               shift and go to state 52
 
 
 state 21
@@ -606,17 +599,17 @@ state 22
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
@@ -631,7 +624,7 @@ state 22
     FOR             shift and go to state 19
     ID              shift and go to state 20
 
-    block                          shift and go to state 54
+    block                          shift and go to state 53
     instruction                    shift and go to state 4
     base_instruction               shift and go to state 5
     if_statement                   shift and go to state 6
@@ -670,22 +663,22 @@ state 24
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    }               shift and go to state 55
+    }               shift and go to state 54
     {               shift and go to state 22
     IF              shift and go to state 10
     PRINT           shift and go to state 14
@@ -727,8 +720,8 @@ state 25
 
 state 26
 
-    (57) if_statement -> IF ( . relation ) body
-    (58) if_statement -> IF ( . relation ) body ELSE body
+    (56) if_statement -> IF ( . relation ) body
+    (57) if_statement -> IF ( . relation ) body ELSE body
     (49) relation -> . expression comp_operator expression
     (17) expression -> . result
     (18) expression -> . ID
@@ -745,7 +738,6 @@ state 26
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -760,20 +752,20 @@ state 26
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    relation                       shift and go to state 56
-    expression                     shift and go to state 57
+    relation                       shift and go to state 55
+    expression                     shift and go to state 56
     result                         shift and go to state 35
     function                       shift and go to state 39
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 27
 
@@ -793,7 +785,6 @@ state 27
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -802,106 +793,104 @@ state 27
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 58
+    expression                     shift and go to state 57
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 28
 
-    (64) assign_op -> = .
+    (63) assign_op -> = .
 
-    ID              reduce using rule 64 (assign_op -> = .)
-    -               reduce using rule 64 (assign_op -> = .)
-    (               reduce using rule 64 (assign_op -> = .)
-    INTEGER         reduce using rule 64 (assign_op -> = .)
-    FLOAT           reduce using rule 64 (assign_op -> = .)
-    STRING          reduce using rule 64 (assign_op -> = .)
-    EYE             reduce using rule 64 (assign_op -> = .)
-    ZEROS           reduce using rule 64 (assign_op -> = .)
-    ONES            reduce using rule 64 (assign_op -> = .)
-    [               reduce using rule 64 (assign_op -> = .)
+    ID              reduce using rule 63 (assign_op -> = .)
+    -               reduce using rule 63 (assign_op -> = .)
+    (               reduce using rule 63 (assign_op -> = .)
+    INTEGER         reduce using rule 63 (assign_op -> = .)
+    FLOAT           reduce using rule 63 (assign_op -> = .)
+    STRING          reduce using rule 63 (assign_op -> = .)
+    EYE             reduce using rule 63 (assign_op -> = .)
+    ZEROS           reduce using rule 63 (assign_op -> = .)
+    ONES            reduce using rule 63 (assign_op -> = .)
+    [               reduce using rule 63 (assign_op -> = .)
 
 
 state 29
 
-    (65) assign_op -> SUMASSIGN .
+    (64) assign_op -> SUMASSIGN .
 
-    ID              reduce using rule 65 (assign_op -> SUMASSIGN .)
-    -               reduce using rule 65 (assign_op -> SUMASSIGN .)
-    (               reduce using rule 65 (assign_op -> SUMASSIGN .)
-    INTEGER         reduce using rule 65 (assign_op -> SUMASSIGN .)
-    FLOAT           reduce using rule 65 (assign_op -> SUMASSIGN .)
-    STRING          reduce using rule 65 (assign_op -> SUMASSIGN .)
-    EYE             reduce using rule 65 (assign_op -> SUMASSIGN .)
-    ZEROS           reduce using rule 65 (assign_op -> SUMASSIGN .)
-    ONES            reduce using rule 65 (assign_op -> SUMASSIGN .)
-    [               reduce using rule 65 (assign_op -> SUMASSIGN .)
+    ID              reduce using rule 64 (assign_op -> SUMASSIGN .)
+    -               reduce using rule 64 (assign_op -> SUMASSIGN .)
+    (               reduce using rule 64 (assign_op -> SUMASSIGN .)
+    INTEGER         reduce using rule 64 (assign_op -> SUMASSIGN .)
+    FLOAT           reduce using rule 64 (assign_op -> SUMASSIGN .)
+    STRING          reduce using rule 64 (assign_op -> SUMASSIGN .)
+    EYE             reduce using rule 64 (assign_op -> SUMASSIGN .)
+    ZEROS           reduce using rule 64 (assign_op -> SUMASSIGN .)
+    ONES            reduce using rule 64 (assign_op -> SUMASSIGN .)
+    [               reduce using rule 64 (assign_op -> SUMASSIGN .)
 
 
 state 30
 
-    (66) assign_op -> DIVASSIGN .
+    (65) assign_op -> DIVASSIGN .
 
-    ID              reduce using rule 66 (assign_op -> DIVASSIGN .)
-    -               reduce using rule 66 (assign_op -> DIVASSIGN .)
-    (               reduce using rule 66 (assign_op -> DIVASSIGN .)
-    INTEGER         reduce using rule 66 (assign_op -> DIVASSIGN .)
-    FLOAT           reduce using rule 66 (assign_op -> DIVASSIGN .)
-    STRING          reduce using rule 66 (assign_op -> DIVASSIGN .)
-    EYE             reduce using rule 66 (assign_op -> DIVASSIGN .)
-    ZEROS           reduce using rule 66 (assign_op -> DIVASSIGN .)
-    ONES            reduce using rule 66 (assign_op -> DIVASSIGN .)
-    [               reduce using rule 66 (assign_op -> DIVASSIGN .)
+    ID              reduce using rule 65 (assign_op -> DIVASSIGN .)
+    -               reduce using rule 65 (assign_op -> DIVASSIGN .)
+    (               reduce using rule 65 (assign_op -> DIVASSIGN .)
+    INTEGER         reduce using rule 65 (assign_op -> DIVASSIGN .)
+    FLOAT           reduce using rule 65 (assign_op -> DIVASSIGN .)
+    STRING          reduce using rule 65 (assign_op -> DIVASSIGN .)
+    EYE             reduce using rule 65 (assign_op -> DIVASSIGN .)
+    ZEROS           reduce using rule 65 (assign_op -> DIVASSIGN .)
+    ONES            reduce using rule 65 (assign_op -> DIVASSIGN .)
+    [               reduce using rule 65 (assign_op -> DIVASSIGN .)
 
 
 state 31
 
-    (67) assign_op -> SUBASSIGN .
+    (66) assign_op -> SUBASSIGN .
 
-    ID              reduce using rule 67 (assign_op -> SUBASSIGN .)
-    -               reduce using rule 67 (assign_op -> SUBASSIGN .)
-    (               reduce using rule 67 (assign_op -> SUBASSIGN .)
-    INTEGER         reduce using rule 67 (assign_op -> SUBASSIGN .)
-    FLOAT           reduce using rule 67 (assign_op -> SUBASSIGN .)
-    STRING          reduce using rule 67 (assign_op -> SUBASSIGN .)
-    EYE             reduce using rule 67 (assign_op -> SUBASSIGN .)
-    ZEROS           reduce using rule 67 (assign_op -> SUBASSIGN .)
-    ONES            reduce using rule 67 (assign_op -> SUBASSIGN .)
-    [               reduce using rule 67 (assign_op -> SUBASSIGN .)
+    ID              reduce using rule 66 (assign_op -> SUBASSIGN .)
+    -               reduce using rule 66 (assign_op -> SUBASSIGN .)
+    (               reduce using rule 66 (assign_op -> SUBASSIGN .)
+    INTEGER         reduce using rule 66 (assign_op -> SUBASSIGN .)
+    FLOAT           reduce using rule 66 (assign_op -> SUBASSIGN .)
+    STRING          reduce using rule 66 (assign_op -> SUBASSIGN .)
+    EYE             reduce using rule 66 (assign_op -> SUBASSIGN .)
+    ZEROS           reduce using rule 66 (assign_op -> SUBASSIGN .)
+    ONES            reduce using rule 66 (assign_op -> SUBASSIGN .)
+    [               reduce using rule 66 (assign_op -> SUBASSIGN .)
 
 
 state 32
 
-    (68) assign_op -> MULASSIGN .
+    (67) assign_op -> MULASSIGN .
 
-    ID              reduce using rule 68 (assign_op -> MULASSIGN .)
-    -               reduce using rule 68 (assign_op -> MULASSIGN .)
-    (               reduce using rule 68 (assign_op -> MULASSIGN .)
-    INTEGER         reduce using rule 68 (assign_op -> MULASSIGN .)
-    FLOAT           reduce using rule 68 (assign_op -> MULASSIGN .)
-    STRING          reduce using rule 68 (assign_op -> MULASSIGN .)
-    EYE             reduce using rule 68 (assign_op -> MULASSIGN .)
-    ZEROS           reduce using rule 68 (assign_op -> MULASSIGN .)
-    ONES            reduce using rule 68 (assign_op -> MULASSIGN .)
-    [               reduce using rule 68 (assign_op -> MULASSIGN .)
+    ID              reduce using rule 67 (assign_op -> MULASSIGN .)
+    -               reduce using rule 67 (assign_op -> MULASSIGN .)
+    (               reduce using rule 67 (assign_op -> MULASSIGN .)
+    INTEGER         reduce using rule 67 (assign_op -> MULASSIGN .)
+    FLOAT           reduce using rule 67 (assign_op -> MULASSIGN .)
+    STRING          reduce using rule 67 (assign_op -> MULASSIGN .)
+    EYE             reduce using rule 67 (assign_op -> MULASSIGN .)
+    ZEROS           reduce using rule 67 (assign_op -> MULASSIGN .)
+    ONES            reduce using rule 67 (assign_op -> MULASSIGN .)
+    [               reduce using rule 67 (assign_op -> MULASSIGN .)
 
 
 state 33
@@ -910,7 +899,7 @@ state 33
     (15) sequence -> sequence . , expression
 
     ;               reduce using rule 43 (keyword -> PRINT sequence .)
-    ,               shift and go to state 59
+    ,               shift and go to state 58
 
 
 state 34
@@ -924,33 +913,19 @@ state 34
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     ,               reduce using rule 16 (sequence -> expression .)
     ;               reduce using rule 16 (sequence -> expression .)
     ]               reduce using rule 16 (sequence -> expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
 state 35
 
@@ -964,14 +939,14 @@ state 35
     DOTDIV          reduce using rule 17 (expression -> result .)
     DOTMUL          reduce using rule 17 (expression -> result .)
     DOTSUB          reduce using rule 17 (expression -> result .)
+    ,               reduce using rule 17 (expression -> result .)
+    ;               reduce using rule 17 (expression -> result .)
     >               reduce using rule 17 (expression -> result .)
     <               reduce using rule 17 (expression -> result .)
     EQ              reduce using rule 17 (expression -> result .)
     GEQ             reduce using rule 17 (expression -> result .)
     LEQ             reduce using rule 17 (expression -> result .)
     NEQ             reduce using rule 17 (expression -> result .)
-    ,               reduce using rule 17 (expression -> result .)
-    ;               reduce using rule 17 (expression -> result .)
     )               reduce using rule 17 (expression -> result .)
     ]               reduce using rule 17 (expression -> result .)
     :               reduce using rule 17 (expression -> result .)
@@ -1000,14 +975,14 @@ state 36
     DOTDIV          reduce using rule 18 (expression -> ID .)
     DOTMUL          reduce using rule 18 (expression -> ID .)
     DOTSUB          reduce using rule 18 (expression -> ID .)
+    ,               reduce using rule 18 (expression -> ID .)
+    ;               reduce using rule 18 (expression -> ID .)
     >               reduce using rule 18 (expression -> ID .)
     <               reduce using rule 18 (expression -> ID .)
     EQ              reduce using rule 18 (expression -> ID .)
     GEQ             reduce using rule 18 (expression -> ID .)
     LEQ             reduce using rule 18 (expression -> ID .)
     NEQ             reduce using rule 18 (expression -> ID .)
-    ,               reduce using rule 18 (expression -> ID .)
-    ;               reduce using rule 18 (expression -> ID .)
     )               reduce using rule 18 (expression -> ID .)
     ]               reduce using rule 18 (expression -> ID .)
     :               reduce using rule 18 (expression -> ID .)
@@ -1020,8 +995,8 @@ state 36
     WHILE           reduce using rule 18 (expression -> ID .)
     FOR             reduce using rule 18 (expression -> ID .)
     ID              reduce using rule 18 (expression -> ID .)
-    '               shift and go to state 75
-    [               shift and go to state 53
+    '               shift and go to state 67
+    [               shift and go to state 52
 
 
 state 37
@@ -1042,7 +1017,6 @@ state 37
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1051,27 +1025,25 @@ state 37
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 76
+    expression                     shift and go to state 68
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 38
 
@@ -1092,7 +1064,6 @@ state 38
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1101,70 +1072,34 @@ state 38
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 77
+    expression                     shift and go to state 69
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
 state 39
 
     (39) expression -> function . ( expression )
 
-    (               shift and go to state 78
+    (               shift and go to state 70
 
 
 state 40
-
-    (50) expression -> relation .
-
-    +               reduce using rule 50 (expression -> relation .)
-    -               reduce using rule 50 (expression -> relation .)
-    *               reduce using rule 50 (expression -> relation .)
-    /               reduce using rule 50 (expression -> relation .)
-    DOTSUM          reduce using rule 50 (expression -> relation .)
-    DOTDIV          reduce using rule 50 (expression -> relation .)
-    DOTMUL          reduce using rule 50 (expression -> relation .)
-    DOTSUB          reduce using rule 50 (expression -> relation .)
-    >               reduce using rule 50 (expression -> relation .)
-    <               reduce using rule 50 (expression -> relation .)
-    EQ              reduce using rule 50 (expression -> relation .)
-    GEQ             reduce using rule 50 (expression -> relation .)
-    LEQ             reduce using rule 50 (expression -> relation .)
-    NEQ             reduce using rule 50 (expression -> relation .)
-    ,               reduce using rule 50 (expression -> relation .)
-    ;               reduce using rule 50 (expression -> relation .)
-    )               reduce using rule 50 (expression -> relation .)
-    ]               reduce using rule 50 (expression -> relation .)
-    :               reduce using rule 50 (expression -> relation .)
-    {               reduce using rule 50 (expression -> relation .)
-    IF              reduce using rule 50 (expression -> relation .)
-    PRINT           reduce using rule 50 (expression -> relation .)
-    BREAK           reduce using rule 50 (expression -> relation .)
-    CONTINUE        reduce using rule 50 (expression -> relation .)
-    RETURN          reduce using rule 50 (expression -> relation .)
-    WHILE           reduce using rule 50 (expression -> relation .)
-    FOR             reduce using rule 50 (expression -> relation .)
-    ID              reduce using rule 50 (expression -> relation .)
-
-
-state 41
 
     (19) result -> INTEGER .
 
@@ -1176,14 +1111,14 @@ state 41
     DOTDIV          reduce using rule 19 (result -> INTEGER .)
     DOTMUL          reduce using rule 19 (result -> INTEGER .)
     DOTSUB          reduce using rule 19 (result -> INTEGER .)
+    ,               reduce using rule 19 (result -> INTEGER .)
+    ;               reduce using rule 19 (result -> INTEGER .)
     >               reduce using rule 19 (result -> INTEGER .)
     <               reduce using rule 19 (result -> INTEGER .)
     EQ              reduce using rule 19 (result -> INTEGER .)
     GEQ             reduce using rule 19 (result -> INTEGER .)
     LEQ             reduce using rule 19 (result -> INTEGER .)
     NEQ             reduce using rule 19 (result -> INTEGER .)
-    ,               reduce using rule 19 (result -> INTEGER .)
-    ;               reduce using rule 19 (result -> INTEGER .)
     )               reduce using rule 19 (result -> INTEGER .)
     ]               reduce using rule 19 (result -> INTEGER .)
     :               reduce using rule 19 (result -> INTEGER .)
@@ -1198,7 +1133,7 @@ state 41
     ID              reduce using rule 19 (result -> INTEGER .)
 
 
-state 42
+state 41
 
     (20) result -> FLOAT .
 
@@ -1210,14 +1145,14 @@ state 42
     DOTDIV          reduce using rule 20 (result -> FLOAT .)
     DOTMUL          reduce using rule 20 (result -> FLOAT .)
     DOTSUB          reduce using rule 20 (result -> FLOAT .)
+    ,               reduce using rule 20 (result -> FLOAT .)
+    ;               reduce using rule 20 (result -> FLOAT .)
     >               reduce using rule 20 (result -> FLOAT .)
     <               reduce using rule 20 (result -> FLOAT .)
     EQ              reduce using rule 20 (result -> FLOAT .)
     GEQ             reduce using rule 20 (result -> FLOAT .)
     LEQ             reduce using rule 20 (result -> FLOAT .)
     NEQ             reduce using rule 20 (result -> FLOAT .)
-    ,               reduce using rule 20 (result -> FLOAT .)
-    ;               reduce using rule 20 (result -> FLOAT .)
     )               reduce using rule 20 (result -> FLOAT .)
     ]               reduce using rule 20 (result -> FLOAT .)
     :               reduce using rule 20 (result -> FLOAT .)
@@ -1232,7 +1167,7 @@ state 42
     ID              reduce using rule 20 (result -> FLOAT .)
 
 
-state 43
+state 42
 
     (21) result -> STRING .
 
@@ -1244,14 +1179,14 @@ state 43
     DOTDIV          reduce using rule 21 (result -> STRING .)
     DOTMUL          reduce using rule 21 (result -> STRING .)
     DOTSUB          reduce using rule 21 (result -> STRING .)
+    ,               reduce using rule 21 (result -> STRING .)
+    ;               reduce using rule 21 (result -> STRING .)
     >               reduce using rule 21 (result -> STRING .)
     <               reduce using rule 21 (result -> STRING .)
     EQ              reduce using rule 21 (result -> STRING .)
     GEQ             reduce using rule 21 (result -> STRING .)
     LEQ             reduce using rule 21 (result -> STRING .)
     NEQ             reduce using rule 21 (result -> STRING .)
-    ,               reduce using rule 21 (result -> STRING .)
-    ;               reduce using rule 21 (result -> STRING .)
     )               reduce using rule 21 (result -> STRING .)
     ]               reduce using rule 21 (result -> STRING .)
     :               reduce using rule 21 (result -> STRING .)
@@ -1266,7 +1201,7 @@ state 43
     ID              reduce using rule 21 (result -> STRING .)
 
 
-state 44
+state 43
 
     (22) result -> tensor .
 
@@ -1278,14 +1213,14 @@ state 44
     DOTDIV          reduce using rule 22 (result -> tensor .)
     DOTMUL          reduce using rule 22 (result -> tensor .)
     DOTSUB          reduce using rule 22 (result -> tensor .)
+    ,               reduce using rule 22 (result -> tensor .)
+    ;               reduce using rule 22 (result -> tensor .)
     >               reduce using rule 22 (result -> tensor .)
     <               reduce using rule 22 (result -> tensor .)
     EQ              reduce using rule 22 (result -> tensor .)
     GEQ             reduce using rule 22 (result -> tensor .)
     LEQ             reduce using rule 22 (result -> tensor .)
     NEQ             reduce using rule 22 (result -> tensor .)
-    ,               reduce using rule 22 (result -> tensor .)
-    ;               reduce using rule 22 (result -> tensor .)
     )               reduce using rule 22 (result -> tensor .)
     ]               reduce using rule 22 (result -> tensor .)
     :               reduce using rule 22 (result -> tensor .)
@@ -1300,7 +1235,7 @@ state 44
     ID              reduce using rule 22 (result -> tensor .)
 
 
-state 45
+state 44
 
     (23) result -> tensor_id .
 
@@ -1312,14 +1247,14 @@ state 45
     DOTDIV          reduce using rule 23 (result -> tensor_id .)
     DOTMUL          reduce using rule 23 (result -> tensor_id .)
     DOTSUB          reduce using rule 23 (result -> tensor_id .)
+    ,               reduce using rule 23 (result -> tensor_id .)
+    ;               reduce using rule 23 (result -> tensor_id .)
     >               reduce using rule 23 (result -> tensor_id .)
     <               reduce using rule 23 (result -> tensor_id .)
     EQ              reduce using rule 23 (result -> tensor_id .)
     GEQ             reduce using rule 23 (result -> tensor_id .)
     LEQ             reduce using rule 23 (result -> tensor_id .)
     NEQ             reduce using rule 23 (result -> tensor_id .)
-    ,               reduce using rule 23 (result -> tensor_id .)
-    ;               reduce using rule 23 (result -> tensor_id .)
     )               reduce using rule 23 (result -> tensor_id .)
     ]               reduce using rule 23 (result -> tensor_id .)
     :               reduce using rule 23 (result -> tensor_id .)
@@ -1334,28 +1269,28 @@ state 45
     ID              reduce using rule 23 (result -> tensor_id .)
 
 
-state 46
+state 45
 
     (40) function -> EYE .
 
     (               reduce using rule 40 (function -> EYE .)
 
 
-state 47
+state 46
 
     (41) function -> ZEROS .
 
     (               reduce using rule 41 (function -> ZEROS .)
 
 
-state 48
+state 47
 
     (42) function -> ONES .
 
     (               reduce using rule 42 (function -> ONES .)
 
 
-state 49
+state 48
 
     (24) tensor -> [ . rows ]
     (25) rows -> . rows ; sequence
@@ -1377,7 +1312,6 @@ state 49
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1386,31 +1320,29 @@ state 49
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    rows                           shift and go to state 79
-    sequence                       shift and go to state 80
+    rows                           shift and go to state 71
+    sequence                       shift and go to state 72
     expression                     shift and go to state 34
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 50
+state 49
 
     (46) keyword -> RETURN expression .
     (31) expression -> expression . + expression
@@ -1421,35 +1353,21 @@ state 50
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     ;               reduce using rule 46 (keyword -> RETURN expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 51
+state 50
 
-    (61) while_statement -> WHILE ( . relation ) body
+    (60) while_statement -> WHILE ( . relation ) body
     (49) relation -> . expression comp_operator expression
     (17) expression -> . result
     (18) expression -> . ID
@@ -1466,7 +1384,6 @@ state 51
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1481,29 +1398,29 @@ state 51
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    relation                       shift and go to state 81
-    expression                     shift and go to state 57
+    relation                       shift and go to state 73
+    expression                     shift and go to state 56
     result                         shift and go to state 35
     function                       shift and go to state 39
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
+
+state 51
+
+    (61) for_statement -> FOR ID . = range body
+
+    =               shift and go to state 74
+
 
 state 52
-
-    (62) for_statement -> FOR ID . = range body
-
-    =               shift and go to state 82
-
-
-state 53
 
     (14) tensor_id -> ID [ . sequence ]
     (15) sequence -> . sequence , expression
@@ -1523,7 +1440,6 @@ state 53
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1532,30 +1448,28 @@ state 53
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    sequence                       shift and go to state 83
+    sequence                       shift and go to state 75
     expression                     shift and go to state 34
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 54
+state 53
 
     (3) block -> block { block . }
     (3) block -> block . { block }
@@ -1565,22 +1479,22 @@ state 54
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    }               shift and go to state 84
+    }               shift and go to state 76
     {               shift and go to state 22
     IF              shift and go to state 10
     PRINT           shift and go to state 14
@@ -1602,7 +1516,7 @@ state 54
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 55
+state 54
 
     (2) block -> { block } .
 
@@ -1619,30 +1533,15 @@ state 55
     }               reduce using rule 2 (block -> { block } .)
 
 
+state 55
+
+    (56) if_statement -> IF ( relation . ) body
+    (57) if_statement -> IF ( relation . ) body ELSE body
+
+    )               shift and go to state 77
+
+
 state 56
-
-    (57) if_statement -> IF ( relation . ) body
-    (58) if_statement -> IF ( relation . ) body ELSE body
-    (50) expression -> relation .
-
-    )               shift and go to state 85
-    +               reduce using rule 50 (expression -> relation .)
-    -               reduce using rule 50 (expression -> relation .)
-    *               reduce using rule 50 (expression -> relation .)
-    /               reduce using rule 50 (expression -> relation .)
-    DOTSUM          reduce using rule 50 (expression -> relation .)
-    DOTDIV          reduce using rule 50 (expression -> relation .)
-    DOTMUL          reduce using rule 50 (expression -> relation .)
-    DOTSUB          reduce using rule 50 (expression -> relation .)
-    >               reduce using rule 50 (expression -> relation .)
-    <               reduce using rule 50 (expression -> relation .)
-    EQ              reduce using rule 50 (expression -> relation .)
-    GEQ             reduce using rule 50 (expression -> relation .)
-    LEQ             reduce using rule 50 (expression -> relation .)
-    NEQ             reduce using rule 50 (expression -> relation .)
-
-
-state 57
 
     (49) relation -> expression . comp_operator expression
     (31) expression -> expression . + expression
@@ -1653,31 +1552,31 @@ state 57
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
+    (50) comp_operator -> . >
+    (51) comp_operator -> . <
+    (52) comp_operator -> . EQ
+    (53) comp_operator -> . GEQ
+    (54) comp_operator -> . LEQ
+    (55) comp_operator -> . NEQ
 
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
+    >               shift and go to state 79
+    <               shift and go to state 80
+    EQ              shift and go to state 81
+    GEQ             shift and go to state 82
+    LEQ             shift and go to state 83
+    NEQ             shift and go to state 84
 
-    comp_operator                  shift and go to state 68
+    comp_operator                  shift and go to state 78
 
-state 58
+state 57
 
     (11) assign_expression -> variable assign_op expression .
     (31) expression -> expression . + expression
@@ -1688,33 +1587,19 @@ state 58
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     ;               reduce using rule 11 (assign_expression -> variable assign_op expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 59
+state 58
 
     (15) sequence -> sequence , . expression
     (17) expression -> . result
@@ -1732,7 +1617,6 @@ state 59
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1741,29 +1625,27 @@ state 59
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 86
+    expression                     shift and go to state 85
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 60
+state 59
 
     (31) expression -> expression + . expression
     (17) expression -> . result
@@ -1781,7 +1663,6 @@ state 60
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1790,29 +1671,27 @@ state 60
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 87
+    expression                     shift and go to state 86
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 61
+state 60
 
     (32) expression -> expression - . expression
     (17) expression -> . result
@@ -1830,7 +1709,6 @@ state 61
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1839,29 +1717,27 @@ state 61
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 88
+    expression                     shift and go to state 87
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 62
+state 61
 
     (33) expression -> expression * . expression
     (17) expression -> . result
@@ -1879,7 +1755,6 @@ state 62
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1888,29 +1763,27 @@ state 62
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 89
+    expression                     shift and go to state 88
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 63
+state 62
 
     (34) expression -> expression / . expression
     (17) expression -> . result
@@ -1928,7 +1801,6 @@ state 63
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1937,29 +1809,27 @@ state 63
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 90
+    expression                     shift and go to state 89
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 64
+state 63
 
     (35) expression -> expression DOTSUM . expression
     (17) expression -> . result
@@ -1977,7 +1847,6 @@ state 64
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -1986,29 +1855,27 @@ state 64
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 91
+    expression                     shift and go to state 90
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 65
+state 64
 
     (36) expression -> expression DOTDIV . expression
     (17) expression -> . result
@@ -2026,7 +1893,6 @@ state 65
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -2035,29 +1901,27 @@ state 65
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 92
+    expression                     shift and go to state 91
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 66
+state 65
 
     (37) expression -> expression DOTMUL . expression
     (17) expression -> . result
@@ -2075,7 +1939,6 @@ state 66
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -2084,29 +1947,27 @@ state 66
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 93
+    expression                     shift and go to state 92
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 67
+state 66
 
     (38) expression -> expression DOTSUB . expression
     (17) expression -> . result
@@ -2124,7 +1985,6 @@ state 67
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -2133,174 +1993,27 @@ state 67
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 94
+    expression                     shift and go to state 93
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 68
-
-    (49) relation -> expression comp_operator . expression
-    (17) expression -> . result
-    (18) expression -> . ID
-    (27) expression -> . - expression
-    (28) expression -> . ID '
-    (29) expression -> . ( expression ) '
-    (30) expression -> . ( expression )
-    (31) expression -> . expression + expression
-    (32) expression -> . expression - expression
-    (33) expression -> . expression * expression
-    (34) expression -> . expression / expression
-    (35) expression -> . expression DOTSUM expression
-    (36) expression -> . expression DOTDIV expression
-    (37) expression -> . expression DOTMUL expression
-    (38) expression -> . expression DOTSUB expression
-    (39) expression -> . function ( expression )
-    (50) expression -> . relation
-    (19) result -> . INTEGER
-    (20) result -> . FLOAT
-    (21) result -> . STRING
-    (22) result -> . tensor
-    (23) result -> . tensor_id
-    (40) function -> . EYE
-    (41) function -> . ZEROS
-    (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
-    (24) tensor -> . [ rows ]
-    (14) tensor_id -> . ID [ sequence ]
-
-    ID              shift and go to state 36
-    -               shift and go to state 37
-    (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
-
-    expression                     shift and go to state 95
-    result                         shift and go to state 35
-    function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
-
-state 69
-
-    (51) comp_operator -> > .
-
-    ID              reduce using rule 51 (comp_operator -> > .)
-    -               reduce using rule 51 (comp_operator -> > .)
-    (               reduce using rule 51 (comp_operator -> > .)
-    INTEGER         reduce using rule 51 (comp_operator -> > .)
-    FLOAT           reduce using rule 51 (comp_operator -> > .)
-    STRING          reduce using rule 51 (comp_operator -> > .)
-    EYE             reduce using rule 51 (comp_operator -> > .)
-    ZEROS           reduce using rule 51 (comp_operator -> > .)
-    ONES            reduce using rule 51 (comp_operator -> > .)
-    [               reduce using rule 51 (comp_operator -> > .)
-
-
-state 70
-
-    (52) comp_operator -> < .
-
-    ID              reduce using rule 52 (comp_operator -> < .)
-    -               reduce using rule 52 (comp_operator -> < .)
-    (               reduce using rule 52 (comp_operator -> < .)
-    INTEGER         reduce using rule 52 (comp_operator -> < .)
-    FLOAT           reduce using rule 52 (comp_operator -> < .)
-    STRING          reduce using rule 52 (comp_operator -> < .)
-    EYE             reduce using rule 52 (comp_operator -> < .)
-    ZEROS           reduce using rule 52 (comp_operator -> < .)
-    ONES            reduce using rule 52 (comp_operator -> < .)
-    [               reduce using rule 52 (comp_operator -> < .)
-
-
-state 71
-
-    (53) comp_operator -> EQ .
-
-    ID              reduce using rule 53 (comp_operator -> EQ .)
-    -               reduce using rule 53 (comp_operator -> EQ .)
-    (               reduce using rule 53 (comp_operator -> EQ .)
-    INTEGER         reduce using rule 53 (comp_operator -> EQ .)
-    FLOAT           reduce using rule 53 (comp_operator -> EQ .)
-    STRING          reduce using rule 53 (comp_operator -> EQ .)
-    EYE             reduce using rule 53 (comp_operator -> EQ .)
-    ZEROS           reduce using rule 53 (comp_operator -> EQ .)
-    ONES            reduce using rule 53 (comp_operator -> EQ .)
-    [               reduce using rule 53 (comp_operator -> EQ .)
-
-
-state 72
-
-    (54) comp_operator -> GEQ .
-
-    ID              reduce using rule 54 (comp_operator -> GEQ .)
-    -               reduce using rule 54 (comp_operator -> GEQ .)
-    (               reduce using rule 54 (comp_operator -> GEQ .)
-    INTEGER         reduce using rule 54 (comp_operator -> GEQ .)
-    FLOAT           reduce using rule 54 (comp_operator -> GEQ .)
-    STRING          reduce using rule 54 (comp_operator -> GEQ .)
-    EYE             reduce using rule 54 (comp_operator -> GEQ .)
-    ZEROS           reduce using rule 54 (comp_operator -> GEQ .)
-    ONES            reduce using rule 54 (comp_operator -> GEQ .)
-    [               reduce using rule 54 (comp_operator -> GEQ .)
-
-
-state 73
-
-    (55) comp_operator -> LEQ .
-
-    ID              reduce using rule 55 (comp_operator -> LEQ .)
-    -               reduce using rule 55 (comp_operator -> LEQ .)
-    (               reduce using rule 55 (comp_operator -> LEQ .)
-    INTEGER         reduce using rule 55 (comp_operator -> LEQ .)
-    FLOAT           reduce using rule 55 (comp_operator -> LEQ .)
-    STRING          reduce using rule 55 (comp_operator -> LEQ .)
-    EYE             reduce using rule 55 (comp_operator -> LEQ .)
-    ZEROS           reduce using rule 55 (comp_operator -> LEQ .)
-    ONES            reduce using rule 55 (comp_operator -> LEQ .)
-    [               reduce using rule 55 (comp_operator -> LEQ .)
-
-
-state 74
-
-    (56) comp_operator -> NEQ .
-
-    ID              reduce using rule 56 (comp_operator -> NEQ .)
-    -               reduce using rule 56 (comp_operator -> NEQ .)
-    (               reduce using rule 56 (comp_operator -> NEQ .)
-    INTEGER         reduce using rule 56 (comp_operator -> NEQ .)
-    FLOAT           reduce using rule 56 (comp_operator -> NEQ .)
-    STRING          reduce using rule 56 (comp_operator -> NEQ .)
-    EYE             reduce using rule 56 (comp_operator -> NEQ .)
-    ZEROS           reduce using rule 56 (comp_operator -> NEQ .)
-    ONES            reduce using rule 56 (comp_operator -> NEQ .)
-    [               reduce using rule 56 (comp_operator -> NEQ .)
-
-
-state 75
+state 67
 
     (28) expression -> ID ' .
 
@@ -2312,14 +2025,14 @@ state 75
     DOTDIV          reduce using rule 28 (expression -> ID ' .)
     DOTMUL          reduce using rule 28 (expression -> ID ' .)
     DOTSUB          reduce using rule 28 (expression -> ID ' .)
+    ,               reduce using rule 28 (expression -> ID ' .)
+    ;               reduce using rule 28 (expression -> ID ' .)
     >               reduce using rule 28 (expression -> ID ' .)
     <               reduce using rule 28 (expression -> ID ' .)
     EQ              reduce using rule 28 (expression -> ID ' .)
     GEQ             reduce using rule 28 (expression -> ID ' .)
     LEQ             reduce using rule 28 (expression -> ID ' .)
     NEQ             reduce using rule 28 (expression -> ID ' .)
-    ,               reduce using rule 28 (expression -> ID ' .)
-    ;               reduce using rule 28 (expression -> ID ' .)
     )               reduce using rule 28 (expression -> ID ' .)
     ]               reduce using rule 28 (expression -> ID ' .)
     :               reduce using rule 28 (expression -> ID ' .)
@@ -2334,7 +2047,7 @@ state 75
     ID              reduce using rule 28 (expression -> ID ' .)
 
 
-state 76
+state 68
 
     (27) expression -> - expression .
     (31) expression -> expression . + expression
@@ -2345,13 +2058,6 @@ state 76
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 27 (expression -> - expression .)
     -               reduce using rule 27 (expression -> - expression .)
@@ -2361,14 +2067,14 @@ state 76
     DOTDIV          reduce using rule 27 (expression -> - expression .)
     DOTMUL          reduce using rule 27 (expression -> - expression .)
     DOTSUB          reduce using rule 27 (expression -> - expression .)
+    ,               reduce using rule 27 (expression -> - expression .)
+    ;               reduce using rule 27 (expression -> - expression .)
     >               reduce using rule 27 (expression -> - expression .)
     <               reduce using rule 27 (expression -> - expression .)
     EQ              reduce using rule 27 (expression -> - expression .)
     GEQ             reduce using rule 27 (expression -> - expression .)
     LEQ             reduce using rule 27 (expression -> - expression .)
     NEQ             reduce using rule 27 (expression -> - expression .)
-    ,               reduce using rule 27 (expression -> - expression .)
-    ;               reduce using rule 27 (expression -> - expression .)
     )               reduce using rule 27 (expression -> - expression .)
     ]               reduce using rule 27 (expression -> - expression .)
     :               reduce using rule 27 (expression -> - expression .)
@@ -2382,24 +2088,17 @@ state 76
     FOR             reduce using rule 27 (expression -> - expression .)
     ID              reduce using rule 27 (expression -> - expression .)
 
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! *               [ shift and go to state 62 ]
-  ! /               [ shift and go to state 63 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTDIV          [ shift and go to state 65 ]
-  ! DOTMUL          [ shift and go to state 66 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! *               [ shift and go to state 61 ]
+  ! /               [ shift and go to state 62 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTDIV          [ shift and go to state 64 ]
+  ! DOTMUL          [ shift and go to state 65 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 77
+state 69
 
     (29) expression -> ( expression . ) '
     (30) expression -> ( expression . )
@@ -2411,33 +2110,19 @@ state 77
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
-    )               shift and go to state 96
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    )               shift and go to state 94
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 78
+state 70
 
     (39) expression -> function ( . expression )
     (17) expression -> . result
@@ -2455,7 +2140,6 @@ state 78
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -2464,73 +2148,56 @@ state 78
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
     function                       shift and go to state 39
-    expression                     shift and go to state 97
+    expression                     shift and go to state 95
     result                         shift and go to state 35
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 79
+state 71
 
     (24) tensor -> [ rows . ]
     (25) rows -> rows . ; sequence
 
-    ]               shift and go to state 98
-    ;               shift and go to state 99
+    ]               shift and go to state 96
+    ;               shift and go to state 97
 
 
-state 80
+state 72
 
     (26) rows -> sequence .
     (15) sequence -> sequence . , expression
 
     ]               reduce using rule 26 (rows -> sequence .)
     ;               reduce using rule 26 (rows -> sequence .)
-    ,               shift and go to state 59
+    ,               shift and go to state 58
 
 
-state 81
+state 73
 
-    (61) while_statement -> WHILE ( relation . ) body
-    (50) expression -> relation .
+    (60) while_statement -> WHILE ( relation . ) body
 
-    )               shift and go to state 100
-    +               reduce using rule 50 (expression -> relation .)
-    -               reduce using rule 50 (expression -> relation .)
-    *               reduce using rule 50 (expression -> relation .)
-    /               reduce using rule 50 (expression -> relation .)
-    DOTSUM          reduce using rule 50 (expression -> relation .)
-    DOTDIV          reduce using rule 50 (expression -> relation .)
-    DOTMUL          reduce using rule 50 (expression -> relation .)
-    DOTSUB          reduce using rule 50 (expression -> relation .)
-    >               reduce using rule 50 (expression -> relation .)
-    <               reduce using rule 50 (expression -> relation .)
-    EQ              reduce using rule 50 (expression -> relation .)
-    GEQ             reduce using rule 50 (expression -> relation .)
-    LEQ             reduce using rule 50 (expression -> relation .)
-    NEQ             reduce using rule 50 (expression -> relation .)
+    )               shift and go to state 98
 
 
-state 82
+state 74
 
-    (62) for_statement -> FOR ID = . range body
-    (63) range -> . expression : expression
+    (61) for_statement -> FOR ID = . range body
+    (62) range -> . expression : expression
     (17) expression -> . result
     (18) expression -> . ID
     (27) expression -> . - expression
@@ -2546,7 +2213,6 @@ state 82
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -2555,39 +2221,37 @@ state 82
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    range                          shift and go to state 101
-    expression                     shift and go to state 102
+    range                          shift and go to state 99
+    expression                     shift and go to state 100
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 83
+state 75
 
     (14) tensor_id -> ID [ sequence . ]
     (15) sequence -> sequence . , expression
 
-    ]               shift and go to state 103
-    ,               shift and go to state 59
+    ]               shift and go to state 101
+    ,               shift and go to state 58
 
 
-state 84
+state 76
 
     (3) block -> block { block } .
 
@@ -2604,10 +2268,10 @@ state 84
     }               reduce using rule 3 (block -> block { block } .)
 
 
-state 85
+state 77
 
-    (57) if_statement -> IF ( relation ) . body
-    (58) if_statement -> IF ( relation ) . body ELSE body
+    (56) if_statement -> IF ( relation ) . body
+    (57) if_statement -> IF ( relation ) . body ELSE body
     (47) body -> . instruction
     (48) body -> . { block }
     (6) instruction -> . base_instruction ;
@@ -2615,22 +2279,22 @@ state 85
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    {               shift and go to state 106
+    {               shift and go to state 104
     IF              shift and go to state 10
     PRINT           shift and go to state 14
     BREAK           shift and go to state 15
@@ -2640,8 +2304,8 @@ state 85
     FOR             shift and go to state 19
     ID              shift and go to state 20
 
-    body                           shift and go to state 104
-    instruction                    shift and go to state 105
+    body                           shift and go to state 102
+    instruction                    shift and go to state 103
     base_instruction               shift and go to state 5
     if_statement                   shift and go to state 6
     loop_statement                 shift and go to state 7
@@ -2652,7 +2316,149 @@ state 85
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 86
+state 78
+
+    (49) relation -> expression comp_operator . expression
+    (17) expression -> . result
+    (18) expression -> . ID
+    (27) expression -> . - expression
+    (28) expression -> . ID '
+    (29) expression -> . ( expression ) '
+    (30) expression -> . ( expression )
+    (31) expression -> . expression + expression
+    (32) expression -> . expression - expression
+    (33) expression -> . expression * expression
+    (34) expression -> . expression / expression
+    (35) expression -> . expression DOTSUM expression
+    (36) expression -> . expression DOTDIV expression
+    (37) expression -> . expression DOTMUL expression
+    (38) expression -> . expression DOTSUB expression
+    (39) expression -> . function ( expression )
+    (19) result -> . INTEGER
+    (20) result -> . FLOAT
+    (21) result -> . STRING
+    (22) result -> . tensor
+    (23) result -> . tensor_id
+    (40) function -> . EYE
+    (41) function -> . ZEROS
+    (42) function -> . ONES
+    (24) tensor -> . [ rows ]
+    (14) tensor_id -> . ID [ sequence ]
+
+    ID              shift and go to state 36
+    -               shift and go to state 37
+    (               shift and go to state 38
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
+
+    expression                     shift and go to state 105
+    result                         shift and go to state 35
+    function                       shift and go to state 39
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
+
+state 79
+
+    (50) comp_operator -> > .
+
+    ID              reduce using rule 50 (comp_operator -> > .)
+    -               reduce using rule 50 (comp_operator -> > .)
+    (               reduce using rule 50 (comp_operator -> > .)
+    INTEGER         reduce using rule 50 (comp_operator -> > .)
+    FLOAT           reduce using rule 50 (comp_operator -> > .)
+    STRING          reduce using rule 50 (comp_operator -> > .)
+    EYE             reduce using rule 50 (comp_operator -> > .)
+    ZEROS           reduce using rule 50 (comp_operator -> > .)
+    ONES            reduce using rule 50 (comp_operator -> > .)
+    [               reduce using rule 50 (comp_operator -> > .)
+
+
+state 80
+
+    (51) comp_operator -> < .
+
+    ID              reduce using rule 51 (comp_operator -> < .)
+    -               reduce using rule 51 (comp_operator -> < .)
+    (               reduce using rule 51 (comp_operator -> < .)
+    INTEGER         reduce using rule 51 (comp_operator -> < .)
+    FLOAT           reduce using rule 51 (comp_operator -> < .)
+    STRING          reduce using rule 51 (comp_operator -> < .)
+    EYE             reduce using rule 51 (comp_operator -> < .)
+    ZEROS           reduce using rule 51 (comp_operator -> < .)
+    ONES            reduce using rule 51 (comp_operator -> < .)
+    [               reduce using rule 51 (comp_operator -> < .)
+
+
+state 81
+
+    (52) comp_operator -> EQ .
+
+    ID              reduce using rule 52 (comp_operator -> EQ .)
+    -               reduce using rule 52 (comp_operator -> EQ .)
+    (               reduce using rule 52 (comp_operator -> EQ .)
+    INTEGER         reduce using rule 52 (comp_operator -> EQ .)
+    FLOAT           reduce using rule 52 (comp_operator -> EQ .)
+    STRING          reduce using rule 52 (comp_operator -> EQ .)
+    EYE             reduce using rule 52 (comp_operator -> EQ .)
+    ZEROS           reduce using rule 52 (comp_operator -> EQ .)
+    ONES            reduce using rule 52 (comp_operator -> EQ .)
+    [               reduce using rule 52 (comp_operator -> EQ .)
+
+
+state 82
+
+    (53) comp_operator -> GEQ .
+
+    ID              reduce using rule 53 (comp_operator -> GEQ .)
+    -               reduce using rule 53 (comp_operator -> GEQ .)
+    (               reduce using rule 53 (comp_operator -> GEQ .)
+    INTEGER         reduce using rule 53 (comp_operator -> GEQ .)
+    FLOAT           reduce using rule 53 (comp_operator -> GEQ .)
+    STRING          reduce using rule 53 (comp_operator -> GEQ .)
+    EYE             reduce using rule 53 (comp_operator -> GEQ .)
+    ZEROS           reduce using rule 53 (comp_operator -> GEQ .)
+    ONES            reduce using rule 53 (comp_operator -> GEQ .)
+    [               reduce using rule 53 (comp_operator -> GEQ .)
+
+
+state 83
+
+    (54) comp_operator -> LEQ .
+
+    ID              reduce using rule 54 (comp_operator -> LEQ .)
+    -               reduce using rule 54 (comp_operator -> LEQ .)
+    (               reduce using rule 54 (comp_operator -> LEQ .)
+    INTEGER         reduce using rule 54 (comp_operator -> LEQ .)
+    FLOAT           reduce using rule 54 (comp_operator -> LEQ .)
+    STRING          reduce using rule 54 (comp_operator -> LEQ .)
+    EYE             reduce using rule 54 (comp_operator -> LEQ .)
+    ZEROS           reduce using rule 54 (comp_operator -> LEQ .)
+    ONES            reduce using rule 54 (comp_operator -> LEQ .)
+    [               reduce using rule 54 (comp_operator -> LEQ .)
+
+
+state 84
+
+    (55) comp_operator -> NEQ .
+
+    ID              reduce using rule 55 (comp_operator -> NEQ .)
+    -               reduce using rule 55 (comp_operator -> NEQ .)
+    (               reduce using rule 55 (comp_operator -> NEQ .)
+    INTEGER         reduce using rule 55 (comp_operator -> NEQ .)
+    FLOAT           reduce using rule 55 (comp_operator -> NEQ .)
+    STRING          reduce using rule 55 (comp_operator -> NEQ .)
+    EYE             reduce using rule 55 (comp_operator -> NEQ .)
+    ZEROS           reduce using rule 55 (comp_operator -> NEQ .)
+    ONES            reduce using rule 55 (comp_operator -> NEQ .)
+    [               reduce using rule 55 (comp_operator -> NEQ .)
+
+
+state 85
 
     (15) sequence -> sequence , expression .
     (31) expression -> expression . + expression
@@ -2663,35 +2469,21 @@ state 86
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     ,               reduce using rule 15 (sequence -> sequence , expression .)
     ;               reduce using rule 15 (sequence -> sequence , expression .)
     ]               reduce using rule 15 (sequence -> sequence , expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 87
+state 86
 
     (31) expression -> expression + expression .
     (31) expression -> expression . + expression
@@ -2702,24 +2494,17 @@ state 87
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 31 (expression -> expression + expression .)
     -               reduce using rule 31 (expression -> expression + expression .)
+    ,               reduce using rule 31 (expression -> expression + expression .)
+    ;               reduce using rule 31 (expression -> expression + expression .)
     >               reduce using rule 31 (expression -> expression + expression .)
     <               reduce using rule 31 (expression -> expression + expression .)
     EQ              reduce using rule 31 (expression -> expression + expression .)
     GEQ             reduce using rule 31 (expression -> expression + expression .)
     LEQ             reduce using rule 31 (expression -> expression + expression .)
     NEQ             reduce using rule 31 (expression -> expression + expression .)
-    ,               reduce using rule 31 (expression -> expression + expression .)
-    ;               reduce using rule 31 (expression -> expression + expression .)
     )               reduce using rule 31 (expression -> expression + expression .)
     ]               reduce using rule 31 (expression -> expression + expression .)
     :               reduce using rule 31 (expression -> expression + expression .)
@@ -2732,12 +2517,12 @@ state 87
     WHILE           reduce using rule 31 (expression -> expression + expression .)
     FOR             reduce using rule 31 (expression -> expression + expression .)
     ID              reduce using rule 31 (expression -> expression + expression .)
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
   ! *               [ reduce using rule 31 (expression -> expression + expression .) ]
   ! /               [ reduce using rule 31 (expression -> expression + expression .) ]
@@ -2745,18 +2530,11 @@ state 87
   ! DOTDIV          [ reduce using rule 31 (expression -> expression + expression .) ]
   ! DOTMUL          [ reduce using rule 31 (expression -> expression + expression .) ]
   ! DOTSUB          [ reduce using rule 31 (expression -> expression + expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
 
-    comp_operator                  shift and go to state 68
 
-state 88
+state 87
 
     (32) expression -> expression - expression .
     (31) expression -> expression . + expression
@@ -2767,24 +2545,17 @@ state 88
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 32 (expression -> expression - expression .)
     -               reduce using rule 32 (expression -> expression - expression .)
+    ,               reduce using rule 32 (expression -> expression - expression .)
+    ;               reduce using rule 32 (expression -> expression - expression .)
     >               reduce using rule 32 (expression -> expression - expression .)
     <               reduce using rule 32 (expression -> expression - expression .)
     EQ              reduce using rule 32 (expression -> expression - expression .)
     GEQ             reduce using rule 32 (expression -> expression - expression .)
     LEQ             reduce using rule 32 (expression -> expression - expression .)
     NEQ             reduce using rule 32 (expression -> expression - expression .)
-    ,               reduce using rule 32 (expression -> expression - expression .)
-    ;               reduce using rule 32 (expression -> expression - expression .)
     )               reduce using rule 32 (expression -> expression - expression .)
     ]               reduce using rule 32 (expression -> expression - expression .)
     :               reduce using rule 32 (expression -> expression - expression .)
@@ -2797,12 +2568,12 @@ state 88
     WHILE           reduce using rule 32 (expression -> expression - expression .)
     FOR             reduce using rule 32 (expression -> expression - expression .)
     ID              reduce using rule 32 (expression -> expression - expression .)
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
   ! *               [ reduce using rule 32 (expression -> expression - expression .) ]
   ! /               [ reduce using rule 32 (expression -> expression - expression .) ]
@@ -2810,18 +2581,11 @@ state 88
   ! DOTDIV          [ reduce using rule 32 (expression -> expression - expression .) ]
   ! DOTMUL          [ reduce using rule 32 (expression -> expression - expression .) ]
   ! DOTSUB          [ reduce using rule 32 (expression -> expression - expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
 
-    comp_operator                  shift and go to state 68
 
-state 89
+state 88
 
     (33) expression -> expression * expression .
     (31) expression -> expression . + expression
@@ -2832,13 +2596,6 @@ state 89
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 33 (expression -> expression * expression .)
     -               reduce using rule 33 (expression -> expression * expression .)
@@ -2846,14 +2603,14 @@ state 89
     /               reduce using rule 33 (expression -> expression * expression .)
     DOTSUM          reduce using rule 33 (expression -> expression * expression .)
     DOTSUB          reduce using rule 33 (expression -> expression * expression .)
+    ,               reduce using rule 33 (expression -> expression * expression .)
+    ;               reduce using rule 33 (expression -> expression * expression .)
     >               reduce using rule 33 (expression -> expression * expression .)
     <               reduce using rule 33 (expression -> expression * expression .)
     EQ              reduce using rule 33 (expression -> expression * expression .)
     GEQ             reduce using rule 33 (expression -> expression * expression .)
     LEQ             reduce using rule 33 (expression -> expression * expression .)
     NEQ             reduce using rule 33 (expression -> expression * expression .)
-    ,               reduce using rule 33 (expression -> expression * expression .)
-    ;               reduce using rule 33 (expression -> expression * expression .)
     )               reduce using rule 33 (expression -> expression * expression .)
     ]               reduce using rule 33 (expression -> expression * expression .)
     :               reduce using rule 33 (expression -> expression * expression .)
@@ -2866,27 +2623,20 @@ state 89
     WHILE           reduce using rule 33 (expression -> expression * expression .)
     FOR             reduce using rule 33 (expression -> expression * expression .)
     ID              reduce using rule 33 (expression -> expression * expression .)
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
 
   ! DOTDIV          [ reduce using rule 33 (expression -> expression * expression .) ]
   ! DOTMUL          [ reduce using rule 33 (expression -> expression * expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! *               [ shift and go to state 62 ]
-  ! /               [ shift and go to state 63 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! *               [ shift and go to state 61 ]
+  ! /               [ shift and go to state 62 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 90
+state 89
 
     (34) expression -> expression / expression .
     (31) expression -> expression . + expression
@@ -2897,13 +2647,6 @@ state 90
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 34 (expression -> expression / expression .)
     -               reduce using rule 34 (expression -> expression / expression .)
@@ -2911,14 +2654,14 @@ state 90
     /               reduce using rule 34 (expression -> expression / expression .)
     DOTSUM          reduce using rule 34 (expression -> expression / expression .)
     DOTSUB          reduce using rule 34 (expression -> expression / expression .)
+    ,               reduce using rule 34 (expression -> expression / expression .)
+    ;               reduce using rule 34 (expression -> expression / expression .)
     >               reduce using rule 34 (expression -> expression / expression .)
     <               reduce using rule 34 (expression -> expression / expression .)
     EQ              reduce using rule 34 (expression -> expression / expression .)
     GEQ             reduce using rule 34 (expression -> expression / expression .)
     LEQ             reduce using rule 34 (expression -> expression / expression .)
     NEQ             reduce using rule 34 (expression -> expression / expression .)
-    ,               reduce using rule 34 (expression -> expression / expression .)
-    ;               reduce using rule 34 (expression -> expression / expression .)
     )               reduce using rule 34 (expression -> expression / expression .)
     ]               reduce using rule 34 (expression -> expression / expression .)
     :               reduce using rule 34 (expression -> expression / expression .)
@@ -2931,27 +2674,20 @@ state 90
     WHILE           reduce using rule 34 (expression -> expression / expression .)
     FOR             reduce using rule 34 (expression -> expression / expression .)
     ID              reduce using rule 34 (expression -> expression / expression .)
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
 
   ! DOTDIV          [ reduce using rule 34 (expression -> expression / expression .) ]
   ! DOTMUL          [ reduce using rule 34 (expression -> expression / expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! *               [ shift and go to state 62 ]
-  ! /               [ shift and go to state 63 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! *               [ shift and go to state 61 ]
+  ! /               [ shift and go to state 62 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 91
+state 90
 
     (35) expression -> expression DOTSUM expression .
     (31) expression -> expression . + expression
@@ -2962,26 +2698,19 @@ state 91
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 35 (expression -> expression DOTSUM expression .)
     -               reduce using rule 35 (expression -> expression DOTSUM expression .)
     DOTSUM          reduce using rule 35 (expression -> expression DOTSUM expression .)
     DOTSUB          reduce using rule 35 (expression -> expression DOTSUM expression .)
+    ,               reduce using rule 35 (expression -> expression DOTSUM expression .)
+    ;               reduce using rule 35 (expression -> expression DOTSUM expression .)
     >               reduce using rule 35 (expression -> expression DOTSUM expression .)
     <               reduce using rule 35 (expression -> expression DOTSUM expression .)
     EQ              reduce using rule 35 (expression -> expression DOTSUM expression .)
     GEQ             reduce using rule 35 (expression -> expression DOTSUM expression .)
     LEQ             reduce using rule 35 (expression -> expression DOTSUM expression .)
     NEQ             reduce using rule 35 (expression -> expression DOTSUM expression .)
-    ,               reduce using rule 35 (expression -> expression DOTSUM expression .)
-    ;               reduce using rule 35 (expression -> expression DOTSUM expression .)
     )               reduce using rule 35 (expression -> expression DOTSUM expression .)
     ]               reduce using rule 35 (expression -> expression DOTSUM expression .)
     :               reduce using rule 35 (expression -> expression DOTSUM expression .)
@@ -2994,29 +2723,22 @@ state 91
     WHILE           reduce using rule 35 (expression -> expression DOTSUM expression .)
     FOR             reduce using rule 35 (expression -> expression DOTSUM expression .)
     ID              reduce using rule 35 (expression -> expression DOTSUM expression .)
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
 
   ! *               [ reduce using rule 35 (expression -> expression DOTSUM expression .) ]
   ! /               [ reduce using rule 35 (expression -> expression DOTSUM expression .) ]
   ! DOTDIV          [ reduce using rule 35 (expression -> expression DOTSUM expression .) ]
   ! DOTMUL          [ reduce using rule 35 (expression -> expression DOTSUM expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 92
+state 91
 
     (36) expression -> expression DOTDIV expression .
     (31) expression -> expression . + expression
@@ -3027,13 +2749,6 @@ state 92
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 36 (expression -> expression DOTDIV expression .)
     -               reduce using rule 36 (expression -> expression DOTDIV expression .)
@@ -3043,14 +2758,14 @@ state 92
     DOTDIV          reduce using rule 36 (expression -> expression DOTDIV expression .)
     DOTMUL          reduce using rule 36 (expression -> expression DOTDIV expression .)
     DOTSUB          reduce using rule 36 (expression -> expression DOTDIV expression .)
+    ,               reduce using rule 36 (expression -> expression DOTDIV expression .)
+    ;               reduce using rule 36 (expression -> expression DOTDIV expression .)
     >               reduce using rule 36 (expression -> expression DOTDIV expression .)
     <               reduce using rule 36 (expression -> expression DOTDIV expression .)
     EQ              reduce using rule 36 (expression -> expression DOTDIV expression .)
     GEQ             reduce using rule 36 (expression -> expression DOTDIV expression .)
     LEQ             reduce using rule 36 (expression -> expression DOTDIV expression .)
     NEQ             reduce using rule 36 (expression -> expression DOTDIV expression .)
-    ,               reduce using rule 36 (expression -> expression DOTDIV expression .)
-    ;               reduce using rule 36 (expression -> expression DOTDIV expression .)
     )               reduce using rule 36 (expression -> expression DOTDIV expression .)
     ]               reduce using rule 36 (expression -> expression DOTDIV expression .)
     :               reduce using rule 36 (expression -> expression DOTDIV expression .)
@@ -3064,24 +2779,17 @@ state 92
     FOR             reduce using rule 36 (expression -> expression DOTDIV expression .)
     ID              reduce using rule 36 (expression -> expression DOTDIV expression .)
 
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! *               [ shift and go to state 62 ]
-  ! /               [ shift and go to state 63 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTDIV          [ shift and go to state 65 ]
-  ! DOTMUL          [ shift and go to state 66 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! *               [ shift and go to state 61 ]
+  ! /               [ shift and go to state 62 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTDIV          [ shift and go to state 64 ]
+  ! DOTMUL          [ shift and go to state 65 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 93
+state 92
 
     (37) expression -> expression DOTMUL expression .
     (31) expression -> expression . + expression
@@ -3092,13 +2800,6 @@ state 93
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 37 (expression -> expression DOTMUL expression .)
     -               reduce using rule 37 (expression -> expression DOTMUL expression .)
@@ -3108,14 +2809,14 @@ state 93
     DOTDIV          reduce using rule 37 (expression -> expression DOTMUL expression .)
     DOTMUL          reduce using rule 37 (expression -> expression DOTMUL expression .)
     DOTSUB          reduce using rule 37 (expression -> expression DOTMUL expression .)
+    ,               reduce using rule 37 (expression -> expression DOTMUL expression .)
+    ;               reduce using rule 37 (expression -> expression DOTMUL expression .)
     >               reduce using rule 37 (expression -> expression DOTMUL expression .)
     <               reduce using rule 37 (expression -> expression DOTMUL expression .)
     EQ              reduce using rule 37 (expression -> expression DOTMUL expression .)
     GEQ             reduce using rule 37 (expression -> expression DOTMUL expression .)
     LEQ             reduce using rule 37 (expression -> expression DOTMUL expression .)
     NEQ             reduce using rule 37 (expression -> expression DOTMUL expression .)
-    ,               reduce using rule 37 (expression -> expression DOTMUL expression .)
-    ;               reduce using rule 37 (expression -> expression DOTMUL expression .)
     )               reduce using rule 37 (expression -> expression DOTMUL expression .)
     ]               reduce using rule 37 (expression -> expression DOTMUL expression .)
     :               reduce using rule 37 (expression -> expression DOTMUL expression .)
@@ -3129,24 +2830,17 @@ state 93
     FOR             reduce using rule 37 (expression -> expression DOTMUL expression .)
     ID              reduce using rule 37 (expression -> expression DOTMUL expression .)
 
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! *               [ shift and go to state 62 ]
-  ! /               [ shift and go to state 63 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTDIV          [ shift and go to state 65 ]
-  ! DOTMUL          [ shift and go to state 66 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! *               [ shift and go to state 61 ]
+  ! /               [ shift and go to state 62 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTDIV          [ shift and go to state 64 ]
+  ! DOTMUL          [ shift and go to state 65 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 94
+state 93
 
     (38) expression -> expression DOTSUB expression .
     (31) expression -> expression . + expression
@@ -3157,26 +2851,19 @@ state 94
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
     +               reduce using rule 38 (expression -> expression DOTSUB expression .)
     -               reduce using rule 38 (expression -> expression DOTSUB expression .)
     DOTSUM          reduce using rule 38 (expression -> expression DOTSUB expression .)
     DOTSUB          reduce using rule 38 (expression -> expression DOTSUB expression .)
+    ,               reduce using rule 38 (expression -> expression DOTSUB expression .)
+    ;               reduce using rule 38 (expression -> expression DOTSUB expression .)
     >               reduce using rule 38 (expression -> expression DOTSUB expression .)
     <               reduce using rule 38 (expression -> expression DOTSUB expression .)
     EQ              reduce using rule 38 (expression -> expression DOTSUB expression .)
     GEQ             reduce using rule 38 (expression -> expression DOTSUB expression .)
     LEQ             reduce using rule 38 (expression -> expression DOTSUB expression .)
     NEQ             reduce using rule 38 (expression -> expression DOTSUB expression .)
-    ,               reduce using rule 38 (expression -> expression DOTSUB expression .)
-    ;               reduce using rule 38 (expression -> expression DOTSUB expression .)
     )               reduce using rule 38 (expression -> expression DOTSUB expression .)
     ]               reduce using rule 38 (expression -> expression DOTSUB expression .)
     :               reduce using rule 38 (expression -> expression DOTSUB expression .)
@@ -3189,113 +2876,27 @@ state 94
     WHILE           reduce using rule 38 (expression -> expression DOTSUB expression .)
     FOR             reduce using rule 38 (expression -> expression DOTSUB expression .)
     ID              reduce using rule 38 (expression -> expression DOTSUB expression .)
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
 
   ! *               [ reduce using rule 38 (expression -> expression DOTSUB expression .) ]
   ! /               [ reduce using rule 38 (expression -> expression DOTSUB expression .) ]
   ! DOTDIV          [ reduce using rule 38 (expression -> expression DOTSUB expression .) ]
   ! DOTMUL          [ reduce using rule 38 (expression -> expression DOTSUB expression .) ]
-  ! +               [ shift and go to state 60 ]
-  ! -               [ shift and go to state 61 ]
-  ! DOTSUM          [ shift and go to state 64 ]
-  ! DOTSUB          [ shift and go to state 67 ]
-  ! >               [ shift and go to state 69 ]
-  ! <               [ shift and go to state 70 ]
-  ! EQ              [ shift and go to state 71 ]
-  ! GEQ             [ shift and go to state 72 ]
-  ! LEQ             [ shift and go to state 73 ]
-  ! NEQ             [ shift and go to state 74 ]
+  ! +               [ shift and go to state 59 ]
+  ! -               [ shift and go to state 60 ]
+  ! DOTSUM          [ shift and go to state 63 ]
+  ! DOTSUB          [ shift and go to state 66 ]
 
-    comp_operator                  shift and go to state 68
 
-state 95
-
-    (49) relation -> expression comp_operator expression .
-    (31) expression -> expression . + expression
-    (32) expression -> expression . - expression
-    (33) expression -> expression . * expression
-    (34) expression -> expression . / expression
-    (35) expression -> expression . DOTSUM expression
-    (36) expression -> expression . DOTDIV expression
-    (37) expression -> expression . DOTMUL expression
-    (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
-
-  ! shift/reduce conflict for + resolved as shift
-  ! shift/reduce conflict for - resolved as shift
-  ! shift/reduce conflict for * resolved as shift
-  ! shift/reduce conflict for / resolved as shift
-  ! shift/reduce conflict for DOTSUM resolved as shift
-  ! shift/reduce conflict for DOTDIV resolved as shift
-  ! shift/reduce conflict for DOTMUL resolved as shift
-  ! shift/reduce conflict for DOTSUB resolved as shift
-  ! shift/reduce conflict for > resolved as shift
-  ! shift/reduce conflict for < resolved as shift
-  ! shift/reduce conflict for EQ resolved as shift
-  ! shift/reduce conflict for GEQ resolved as shift
-  ! shift/reduce conflict for LEQ resolved as shift
-  ! shift/reduce conflict for NEQ resolved as shift
-    ,               reduce using rule 49 (relation -> expression comp_operator expression .)
-    ;               reduce using rule 49 (relation -> expression comp_operator expression .)
-    )               reduce using rule 49 (relation -> expression comp_operator expression .)
-    ]               reduce using rule 49 (relation -> expression comp_operator expression .)
-    :               reduce using rule 49 (relation -> expression comp_operator expression .)
-    {               reduce using rule 49 (relation -> expression comp_operator expression .)
-    IF              reduce using rule 49 (relation -> expression comp_operator expression .)
-    PRINT           reduce using rule 49 (relation -> expression comp_operator expression .)
-    BREAK           reduce using rule 49 (relation -> expression comp_operator expression .)
-    CONTINUE        reduce using rule 49 (relation -> expression comp_operator expression .)
-    RETURN          reduce using rule 49 (relation -> expression comp_operator expression .)
-    WHILE           reduce using rule 49 (relation -> expression comp_operator expression .)
-    FOR             reduce using rule 49 (relation -> expression comp_operator expression .)
-    ID              reduce using rule 49 (relation -> expression comp_operator expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
-
-  ! +               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! -               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! *               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! /               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! DOTSUM          [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! DOTDIV          [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! DOTMUL          [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! DOTSUB          [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! >               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! <               [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! EQ              [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! GEQ             [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! LEQ             [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-  ! NEQ             [ reduce using rule 49 (relation -> expression comp_operator expression .) ]
-
-    comp_operator                  shift and go to state 68
-
-state 96
+state 94
 
     (29) expression -> ( expression ) . '
     (30) expression -> ( expression ) .
 
-    '               shift and go to state 107
+    '               shift and go to state 106
     +               reduce using rule 30 (expression -> ( expression ) .)
     -               reduce using rule 30 (expression -> ( expression ) .)
     *               reduce using rule 30 (expression -> ( expression ) .)
@@ -3304,14 +2905,14 @@ state 96
     DOTDIV          reduce using rule 30 (expression -> ( expression ) .)
     DOTMUL          reduce using rule 30 (expression -> ( expression ) .)
     DOTSUB          reduce using rule 30 (expression -> ( expression ) .)
+    ,               reduce using rule 30 (expression -> ( expression ) .)
+    ;               reduce using rule 30 (expression -> ( expression ) .)
     >               reduce using rule 30 (expression -> ( expression ) .)
     <               reduce using rule 30 (expression -> ( expression ) .)
     EQ              reduce using rule 30 (expression -> ( expression ) .)
     GEQ             reduce using rule 30 (expression -> ( expression ) .)
     LEQ             reduce using rule 30 (expression -> ( expression ) .)
     NEQ             reduce using rule 30 (expression -> ( expression ) .)
-    ,               reduce using rule 30 (expression -> ( expression ) .)
-    ;               reduce using rule 30 (expression -> ( expression ) .)
     )               reduce using rule 30 (expression -> ( expression ) .)
     ]               reduce using rule 30 (expression -> ( expression ) .)
     :               reduce using rule 30 (expression -> ( expression ) .)
@@ -3326,7 +2927,7 @@ state 96
     ID              reduce using rule 30 (expression -> ( expression ) .)
 
 
-state 97
+state 95
 
     (39) expression -> function ( expression . )
     (31) expression -> expression . + expression
@@ -3337,33 +2938,19 @@ state 97
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
-    )               shift and go to state 108
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    )               shift and go to state 107
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 98
+state 96
 
     (24) tensor -> [ rows ] .
 
@@ -3375,14 +2962,14 @@ state 98
     DOTDIV          reduce using rule 24 (tensor -> [ rows ] .)
     DOTMUL          reduce using rule 24 (tensor -> [ rows ] .)
     DOTSUB          reduce using rule 24 (tensor -> [ rows ] .)
+    ,               reduce using rule 24 (tensor -> [ rows ] .)
+    ;               reduce using rule 24 (tensor -> [ rows ] .)
     >               reduce using rule 24 (tensor -> [ rows ] .)
     <               reduce using rule 24 (tensor -> [ rows ] .)
     EQ              reduce using rule 24 (tensor -> [ rows ] .)
     GEQ             reduce using rule 24 (tensor -> [ rows ] .)
     LEQ             reduce using rule 24 (tensor -> [ rows ] .)
     NEQ             reduce using rule 24 (tensor -> [ rows ] .)
-    ,               reduce using rule 24 (tensor -> [ rows ] .)
-    ;               reduce using rule 24 (tensor -> [ rows ] .)
     )               reduce using rule 24 (tensor -> [ rows ] .)
     ]               reduce using rule 24 (tensor -> [ rows ] .)
     :               reduce using rule 24 (tensor -> [ rows ] .)
@@ -3397,7 +2984,7 @@ state 98
     ID              reduce using rule 24 (tensor -> [ rows ] .)
 
 
-state 99
+state 97
 
     (25) rows -> rows ; . sequence
     (15) sequence -> . sequence , expression
@@ -3417,7 +3004,6 @@ state 99
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -3426,32 +3012,30 @@ state 99
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    sequence                       shift and go to state 109
+    sequence                       shift and go to state 108
     expression                     shift and go to state 34
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 100
+state 98
 
-    (61) while_statement -> WHILE ( relation ) . body
+    (60) while_statement -> WHILE ( relation ) . body
     (47) body -> . instruction
     (48) body -> . { block }
     (6) instruction -> . base_instruction ;
@@ -3459,22 +3043,69 @@ state 100
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    {               shift and go to state 106
+    {               shift and go to state 104
+    IF              shift and go to state 10
+    PRINT           shift and go to state 14
+    BREAK           shift and go to state 15
+    CONTINUE        shift and go to state 16
+    RETURN          shift and go to state 17
+    WHILE           shift and go to state 18
+    FOR             shift and go to state 19
+    ID              shift and go to state 20
+
+    body                           shift and go to state 109
+    instruction                    shift and go to state 103
+    base_instruction               shift and go to state 5
+    if_statement                   shift and go to state 6
+    loop_statement                 shift and go to state 7
+    assign_expression              shift and go to state 8
+    keyword                        shift and go to state 9
+    while_statement                shift and go to state 11
+    for_statement                  shift and go to state 12
+    variable                       shift and go to state 13
+    tensor_id                      shift and go to state 21
+
+state 99
+
+    (61) for_statement -> FOR ID = range . body
+    (47) body -> . instruction
+    (48) body -> . { block }
+    (6) instruction -> . base_instruction ;
+    (7) instruction -> . if_statement
+    (8) instruction -> . loop_statement
+    (9) base_instruction -> . assign_expression
+    (10) base_instruction -> . keyword
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
+    (11) assign_expression -> . variable assign_op expression
+    (43) keyword -> . PRINT sequence
+    (44) keyword -> . BREAK
+    (45) keyword -> . CONTINUE
+    (46) keyword -> . RETURN expression
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
+    (12) variable -> . ID
+    (13) variable -> . tensor_id
+    (14) tensor_id -> . ID [ sequence ]
+
+    {               shift and go to state 104
     IF              shift and go to state 10
     PRINT           shift and go to state 14
     BREAK           shift and go to state 15
@@ -3485,7 +3116,7 @@ state 100
     ID              shift and go to state 20
 
     body                           shift and go to state 110
-    instruction                    shift and go to state 105
+    instruction                    shift and go to state 103
     base_instruction               shift and go to state 5
     if_statement                   shift and go to state 6
     loop_statement                 shift and go to state 7
@@ -3496,56 +3127,9 @@ state 100
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 101
+state 100
 
-    (62) for_statement -> FOR ID = range . body
-    (47) body -> . instruction
-    (48) body -> . { block }
-    (6) instruction -> . base_instruction ;
-    (7) instruction -> . if_statement
-    (8) instruction -> . loop_statement
-    (9) base_instruction -> . assign_expression
-    (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
-    (11) assign_expression -> . variable assign_op expression
-    (43) keyword -> . PRINT sequence
-    (44) keyword -> . BREAK
-    (45) keyword -> . CONTINUE
-    (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
-    (12) variable -> . ID
-    (13) variable -> . tensor_id
-    (14) tensor_id -> . ID [ sequence ]
-
-    {               shift and go to state 106
-    IF              shift and go to state 10
-    PRINT           shift and go to state 14
-    BREAK           shift and go to state 15
-    CONTINUE        shift and go to state 16
-    RETURN          shift and go to state 17
-    WHILE           shift and go to state 18
-    FOR             shift and go to state 19
-    ID              shift and go to state 20
-
-    body                           shift and go to state 111
-    instruction                    shift and go to state 105
-    base_instruction               shift and go to state 5
-    if_statement                   shift and go to state 6
-    loop_statement                 shift and go to state 7
-    assign_expression              shift and go to state 8
-    keyword                        shift and go to state 9
-    while_statement                shift and go to state 11
-    for_statement                  shift and go to state 12
-    variable                       shift and go to state 13
-    tensor_id                      shift and go to state 21
-
-state 102
-
-    (63) range -> expression . : expression
+    (62) range -> expression . : expression
     (31) expression -> expression . + expression
     (32) expression -> expression . - expression
     (33) expression -> expression . * expression
@@ -3554,33 +3138,19 @@ state 102
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
-    :               shift and go to state 112
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    :               shift and go to state 111
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
 
-state 103
+state 101
 
     (14) tensor_id -> ID [ sequence ] .
 
@@ -3597,14 +3167,14 @@ state 103
     DOTDIV          reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     DOTMUL          reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     DOTSUB          reduce using rule 14 (tensor_id -> ID [ sequence ] .)
+    ,               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
+    ;               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     >               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     <               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     EQ              reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     GEQ             reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     LEQ             reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     NEQ             reduce using rule 14 (tensor_id -> ID [ sequence ] .)
-    ,               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
-    ;               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     )               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     ]               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
     :               reduce using rule 14 (tensor_id -> ID [ sequence ] .)
@@ -3619,28 +3189,28 @@ state 103
     ID              reduce using rule 14 (tensor_id -> ID [ sequence ] .)
 
 
-state 104
+state 102
 
-    (57) if_statement -> IF ( relation ) body .
-    (58) if_statement -> IF ( relation ) body . ELSE body
+    (56) if_statement -> IF ( relation ) body .
+    (57) if_statement -> IF ( relation ) body . ELSE body
 
-    {               reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    IF              reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    PRINT           reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    BREAK           reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    CONTINUE        reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    RETURN          reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    WHILE           reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    FOR             reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    ID              reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    $end            reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    }               reduce using rule 57 (if_statement -> IF ( relation ) body .)
-    ELSE            shift and go to state 113
+    {               reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    IF              reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    PRINT           reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    BREAK           reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    CONTINUE        reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    RETURN          reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    WHILE           reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    FOR             reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    ID              reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    $end            reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    }               reduce using rule 56 (if_statement -> IF ( relation ) body .)
+    ELSE            shift and go to state 112
 
-  ! ELSE            [ reduce using rule 57 (if_statement -> IF ( relation ) body .) ]
+  ! ELSE            [ reduce using rule 56 (if_statement -> IF ( relation ) body .) ]
 
 
-state 105
+state 103
 
     (47) body -> instruction .
 
@@ -3658,7 +3228,7 @@ state 105
     }               reduce using rule 47 (body -> instruction .)
 
 
-state 106
+state 104
 
     (48) body -> { . block }
     (2) block -> . { block }
@@ -3670,17 +3240,17 @@ state 106
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
@@ -3695,7 +3265,7 @@ state 106
     FOR             shift and go to state 19
     ID              shift and go to state 20
 
-    block                          shift and go to state 114
+    block                          shift and go to state 113
     instruction                    shift and go to state 4
     base_instruction               shift and go to state 5
     if_statement                   shift and go to state 6
@@ -3707,7 +3277,30 @@ state 106
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 107
+state 105
+
+    (49) relation -> expression comp_operator expression .
+    (31) expression -> expression . + expression
+    (32) expression -> expression . - expression
+    (33) expression -> expression . * expression
+    (34) expression -> expression . / expression
+    (35) expression -> expression . DOTSUM expression
+    (36) expression -> expression . DOTDIV expression
+    (37) expression -> expression . DOTMUL expression
+    (38) expression -> expression . DOTSUB expression
+
+    )               reduce using rule 49 (relation -> expression comp_operator expression .)
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
+
+
+state 106
 
     (29) expression -> ( expression ) ' .
 
@@ -3719,14 +3312,14 @@ state 107
     DOTDIV          reduce using rule 29 (expression -> ( expression ) ' .)
     DOTMUL          reduce using rule 29 (expression -> ( expression ) ' .)
     DOTSUB          reduce using rule 29 (expression -> ( expression ) ' .)
+    ,               reduce using rule 29 (expression -> ( expression ) ' .)
+    ;               reduce using rule 29 (expression -> ( expression ) ' .)
     >               reduce using rule 29 (expression -> ( expression ) ' .)
     <               reduce using rule 29 (expression -> ( expression ) ' .)
     EQ              reduce using rule 29 (expression -> ( expression ) ' .)
     GEQ             reduce using rule 29 (expression -> ( expression ) ' .)
     LEQ             reduce using rule 29 (expression -> ( expression ) ' .)
     NEQ             reduce using rule 29 (expression -> ( expression ) ' .)
-    ,               reduce using rule 29 (expression -> ( expression ) ' .)
-    ;               reduce using rule 29 (expression -> ( expression ) ' .)
     )               reduce using rule 29 (expression -> ( expression ) ' .)
     ]               reduce using rule 29 (expression -> ( expression ) ' .)
     :               reduce using rule 29 (expression -> ( expression ) ' .)
@@ -3741,7 +3334,7 @@ state 107
     ID              reduce using rule 29 (expression -> ( expression ) ' .)
 
 
-state 108
+state 107
 
     (39) expression -> function ( expression ) .
 
@@ -3753,14 +3346,14 @@ state 108
     DOTDIV          reduce using rule 39 (expression -> function ( expression ) .)
     DOTMUL          reduce using rule 39 (expression -> function ( expression ) .)
     DOTSUB          reduce using rule 39 (expression -> function ( expression ) .)
+    ,               reduce using rule 39 (expression -> function ( expression ) .)
+    ;               reduce using rule 39 (expression -> function ( expression ) .)
     >               reduce using rule 39 (expression -> function ( expression ) .)
     <               reduce using rule 39 (expression -> function ( expression ) .)
     EQ              reduce using rule 39 (expression -> function ( expression ) .)
     GEQ             reduce using rule 39 (expression -> function ( expression ) .)
     LEQ             reduce using rule 39 (expression -> function ( expression ) .)
     NEQ             reduce using rule 39 (expression -> function ( expression ) .)
-    ,               reduce using rule 39 (expression -> function ( expression ) .)
-    ;               reduce using rule 39 (expression -> function ( expression ) .)
     )               reduce using rule 39 (expression -> function ( expression ) .)
     ]               reduce using rule 39 (expression -> function ( expression ) .)
     :               reduce using rule 39 (expression -> function ( expression ) .)
@@ -3775,55 +3368,55 @@ state 108
     ID              reduce using rule 39 (expression -> function ( expression ) .)
 
 
-state 109
+state 108
 
     (25) rows -> rows ; sequence .
     (15) sequence -> sequence . , expression
 
     ]               reduce using rule 25 (rows -> rows ; sequence .)
     ;               reduce using rule 25 (rows -> rows ; sequence .)
-    ,               shift and go to state 59
+    ,               shift and go to state 58
+
+
+state 109
+
+    (60) while_statement -> WHILE ( relation ) body .
+
+    {               reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    IF              reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    PRINT           reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    BREAK           reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    CONTINUE        reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    RETURN          reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    WHILE           reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    FOR             reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    ID              reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    $end            reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    }               reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
+    ELSE            reduce using rule 60 (while_statement -> WHILE ( relation ) body .)
 
 
 state 110
 
-    (61) while_statement -> WHILE ( relation ) body .
+    (61) for_statement -> FOR ID = range body .
 
-    {               reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    IF              reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    PRINT           reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    BREAK           reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    CONTINUE        reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    RETURN          reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    WHILE           reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    FOR             reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    ID              reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    $end            reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    }               reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
-    ELSE            reduce using rule 61 (while_statement -> WHILE ( relation ) body .)
+    {               reduce using rule 61 (for_statement -> FOR ID = range body .)
+    IF              reduce using rule 61 (for_statement -> FOR ID = range body .)
+    PRINT           reduce using rule 61 (for_statement -> FOR ID = range body .)
+    BREAK           reduce using rule 61 (for_statement -> FOR ID = range body .)
+    CONTINUE        reduce using rule 61 (for_statement -> FOR ID = range body .)
+    RETURN          reduce using rule 61 (for_statement -> FOR ID = range body .)
+    WHILE           reduce using rule 61 (for_statement -> FOR ID = range body .)
+    FOR             reduce using rule 61 (for_statement -> FOR ID = range body .)
+    ID              reduce using rule 61 (for_statement -> FOR ID = range body .)
+    $end            reduce using rule 61 (for_statement -> FOR ID = range body .)
+    }               reduce using rule 61 (for_statement -> FOR ID = range body .)
+    ELSE            reduce using rule 61 (for_statement -> FOR ID = range body .)
 
 
 state 111
 
-    (62) for_statement -> FOR ID = range body .
-
-    {               reduce using rule 62 (for_statement -> FOR ID = range body .)
-    IF              reduce using rule 62 (for_statement -> FOR ID = range body .)
-    PRINT           reduce using rule 62 (for_statement -> FOR ID = range body .)
-    BREAK           reduce using rule 62 (for_statement -> FOR ID = range body .)
-    CONTINUE        reduce using rule 62 (for_statement -> FOR ID = range body .)
-    RETURN          reduce using rule 62 (for_statement -> FOR ID = range body .)
-    WHILE           reduce using rule 62 (for_statement -> FOR ID = range body .)
-    FOR             reduce using rule 62 (for_statement -> FOR ID = range body .)
-    ID              reduce using rule 62 (for_statement -> FOR ID = range body .)
-    $end            reduce using rule 62 (for_statement -> FOR ID = range body .)
-    }               reduce using rule 62 (for_statement -> FOR ID = range body .)
-    ELSE            reduce using rule 62 (for_statement -> FOR ID = range body .)
-
-
-state 112
-
-    (63) range -> expression : . expression
+    (62) range -> expression : . expression
     (17) expression -> . result
     (18) expression -> . ID
     (27) expression -> . - expression
@@ -3839,7 +3432,6 @@ state 112
     (37) expression -> . expression DOTMUL expression
     (38) expression -> . expression DOTSUB expression
     (39) expression -> . function ( expression )
-    (50) expression -> . relation
     (19) result -> . INTEGER
     (20) result -> . FLOAT
     (21) result -> . STRING
@@ -3848,31 +3440,29 @@ state 112
     (40) function -> . EYE
     (41) function -> . ZEROS
     (42) function -> . ONES
-    (49) relation -> . expression comp_operator expression
     (24) tensor -> . [ rows ]
     (14) tensor_id -> . ID [ sequence ]
 
     ID              shift and go to state 36
     -               shift and go to state 37
     (               shift and go to state 38
-    INTEGER         shift and go to state 41
-    FLOAT           shift and go to state 42
-    STRING          shift and go to state 43
-    EYE             shift and go to state 46
-    ZEROS           shift and go to state 47
-    ONES            shift and go to state 48
-    [               shift and go to state 49
+    INTEGER         shift and go to state 40
+    FLOAT           shift and go to state 41
+    STRING          shift and go to state 42
+    EYE             shift and go to state 45
+    ZEROS           shift and go to state 46
+    ONES            shift and go to state 47
+    [               shift and go to state 48
 
-    expression                     shift and go to state 115
+    expression                     shift and go to state 114
     result                         shift and go to state 35
     function                       shift and go to state 39
-    relation                       shift and go to state 40
-    tensor                         shift and go to state 44
-    tensor_id                      shift and go to state 45
+    tensor                         shift and go to state 43
+    tensor_id                      shift and go to state 44
 
-state 113
+state 112
 
-    (58) if_statement -> IF ( relation ) body ELSE . body
+    (57) if_statement -> IF ( relation ) body ELSE . body
     (47) body -> . instruction
     (48) body -> . { block }
     (6) instruction -> . base_instruction ;
@@ -3880,22 +3470,22 @@ state 113
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    {               shift and go to state 106
+    {               shift and go to state 104
     IF              shift and go to state 10
     PRINT           shift and go to state 14
     BREAK           shift and go to state 15
@@ -3905,8 +3495,8 @@ state 113
     FOR             shift and go to state 19
     ID              shift and go to state 20
 
-    body                           shift and go to state 116
-    instruction                    shift and go to state 105
+    body                           shift and go to state 115
+    instruction                    shift and go to state 103
     base_instruction               shift and go to state 5
     if_statement                   shift and go to state 6
     loop_statement                 shift and go to state 7
@@ -3917,7 +3507,7 @@ state 113
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 114
+state 113
 
     (48) body -> { block . }
     (3) block -> block . { block }
@@ -3927,22 +3517,22 @@ state 114
     (8) instruction -> . loop_statement
     (9) base_instruction -> . assign_expression
     (10) base_instruction -> . keyword
-    (57) if_statement -> . IF ( relation ) body
-    (58) if_statement -> . IF ( relation ) body ELSE body
-    (59) loop_statement -> . while_statement
-    (60) loop_statement -> . for_statement
+    (56) if_statement -> . IF ( relation ) body
+    (57) if_statement -> . IF ( relation ) body ELSE body
+    (58) loop_statement -> . while_statement
+    (59) loop_statement -> . for_statement
     (11) assign_expression -> . variable assign_op expression
     (43) keyword -> . PRINT sequence
     (44) keyword -> . BREAK
     (45) keyword -> . CONTINUE
     (46) keyword -> . RETURN expression
-    (61) while_statement -> . WHILE ( relation ) body
-    (62) for_statement -> . FOR ID = range body
+    (60) while_statement -> . WHILE ( relation ) body
+    (61) for_statement -> . FOR ID = range body
     (12) variable -> . ID
     (13) variable -> . tensor_id
     (14) tensor_id -> . ID [ sequence ]
 
-    }               shift and go to state 117
+    }               shift and go to state 116
     {               shift and go to state 22
     IF              shift and go to state 10
     PRINT           shift and go to state 14
@@ -3964,9 +3554,9 @@ state 114
     variable                       shift and go to state 13
     tensor_id                      shift and go to state 21
 
-state 115
+state 114
 
-    (63) range -> expression : expression .
+    (62) range -> expression : expression .
     (31) expression -> expression . + expression
     (32) expression -> expression . - expression
     (33) expression -> expression . * expression
@@ -3975,59 +3565,45 @@ state 115
     (36) expression -> expression . DOTDIV expression
     (37) expression -> expression . DOTMUL expression
     (38) expression -> expression . DOTSUB expression
-    (49) relation -> expression . comp_operator expression
-    (51) comp_operator -> . >
-    (52) comp_operator -> . <
-    (53) comp_operator -> . EQ
-    (54) comp_operator -> . GEQ
-    (55) comp_operator -> . LEQ
-    (56) comp_operator -> . NEQ
 
-    {               reduce using rule 63 (range -> expression : expression .)
-    IF              reduce using rule 63 (range -> expression : expression .)
-    PRINT           reduce using rule 63 (range -> expression : expression .)
-    BREAK           reduce using rule 63 (range -> expression : expression .)
-    CONTINUE        reduce using rule 63 (range -> expression : expression .)
-    RETURN          reduce using rule 63 (range -> expression : expression .)
-    WHILE           reduce using rule 63 (range -> expression : expression .)
-    FOR             reduce using rule 63 (range -> expression : expression .)
-    ID              reduce using rule 63 (range -> expression : expression .)
-    +               shift and go to state 60
-    -               shift and go to state 61
-    *               shift and go to state 62
-    /               shift and go to state 63
-    DOTSUM          shift and go to state 64
-    DOTDIV          shift and go to state 65
-    DOTMUL          shift and go to state 66
-    DOTSUB          shift and go to state 67
-    >               shift and go to state 69
-    <               shift and go to state 70
-    EQ              shift and go to state 71
-    GEQ             shift and go to state 72
-    LEQ             shift and go to state 73
-    NEQ             shift and go to state 74
+    {               reduce using rule 62 (range -> expression : expression .)
+    IF              reduce using rule 62 (range -> expression : expression .)
+    PRINT           reduce using rule 62 (range -> expression : expression .)
+    BREAK           reduce using rule 62 (range -> expression : expression .)
+    CONTINUE        reduce using rule 62 (range -> expression : expression .)
+    RETURN          reduce using rule 62 (range -> expression : expression .)
+    WHILE           reduce using rule 62 (range -> expression : expression .)
+    FOR             reduce using rule 62 (range -> expression : expression .)
+    ID              reduce using rule 62 (range -> expression : expression .)
+    +               shift and go to state 59
+    -               shift and go to state 60
+    *               shift and go to state 61
+    /               shift and go to state 62
+    DOTSUM          shift and go to state 63
+    DOTDIV          shift and go to state 64
+    DOTMUL          shift and go to state 65
+    DOTSUB          shift and go to state 66
 
-    comp_operator                  shift and go to state 68
+
+state 115
+
+    (57) if_statement -> IF ( relation ) body ELSE body .
+
+    {               reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    IF              reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    PRINT           reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    BREAK           reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    CONTINUE        reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    RETURN          reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    WHILE           reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    FOR             reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    ID              reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    $end            reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    }               reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+    ELSE            reduce using rule 57 (if_statement -> IF ( relation ) body ELSE body .)
+
 
 state 116
-
-    (58) if_statement -> IF ( relation ) body ELSE body .
-
-    {               reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    IF              reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    PRINT           reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    BREAK           reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    CONTINUE        reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    RETURN          reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    WHILE           reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    FOR             reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    ID              reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    $end            reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    }               reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-    ELSE            reduce using rule 58 (if_statement -> IF ( relation ) body ELSE body .)
-
-
-state 117
 
     (48) body -> { block } .
 
@@ -4044,20 +3620,3 @@ state 117
     $end            reduce using rule 48 (body -> { block } .)
     }               reduce using rule 48 (body -> { block } .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for + in state 95 resolved as shift
-WARNING: shift/reduce conflict for - in state 95 resolved as shift
-WARNING: shift/reduce conflict for * in state 95 resolved as shift
-WARNING: shift/reduce conflict for / in state 95 resolved as shift
-WARNING: shift/reduce conflict for DOTSUM in state 95 resolved as shift
-WARNING: shift/reduce conflict for DOTDIV in state 95 resolved as shift
-WARNING: shift/reduce conflict for DOTMUL in state 95 resolved as shift
-WARNING: shift/reduce conflict for DOTSUB in state 95 resolved as shift
-WARNING: shift/reduce conflict for > in state 95 resolved as shift
-WARNING: shift/reduce conflict for < in state 95 resolved as shift
-WARNING: shift/reduce conflict for EQ in state 95 resolved as shift
-WARNING: shift/reduce conflict for GEQ in state 95 resolved as shift
-WARNING: shift/reduce conflict for LEQ in state 95 resolved as shift
-WARNING: shift/reduce conflict for NEQ in state 95 resolved as shift

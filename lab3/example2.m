@@ -9,4 +9,3 @@ D4 /= A./B' ; # divide element-wise A with transpose of B
 
 
 
-

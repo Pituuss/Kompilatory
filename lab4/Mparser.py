@@ -80,7 +80,7 @@ def p_assign_expression(p):
     """
     assign_expression : variable assign_op expression
     """
-    p[0] = ast.Assignment(p[1], p[2], p[3])
+    p[0] = ast.Assignment(p[1], p[2], p[3], p.lexer.lineno)
 
 
 def p_variable(p):
@@ -88,14 +88,14 @@ def p_variable(p):
     variable : ID
              | tensor_id
     """
-    p[0] = ast.Variable(p[1])
+    p[0] = ast.Variable(p[1], p.lexer.lineno)
 
 
 def p_tensor_id(p):
     """
     tensor_id : ID '[' sequence ']'
     """
-    p[0] = ast.TensorID(p[1], p[3])
+    p[0] = ast.TensorID(p[1], p[3], p.lexer.lineno)
 
 
 def p_sequence(p):
@@ -121,7 +121,7 @@ def p_expression_id(p):
     """
     expression : ID
     """
-    p[0] = ast.Variable(p[1])
+    p[0] = ast.Variable(p[1], p.lexer.lineno)
 
 
 def p_result(p):
@@ -139,7 +139,7 @@ def p_tensor(p):
     """
     tensor : '[' rows ']'
     """
-    p[0] = ast.Tensor(p[2])
+    p[0] = ast.Tensor(p[2], p.lexer.lineno)
 
 
 def p_rows(p):
@@ -165,7 +165,7 @@ def p_transpose_variable(p):
     """
     expression : ID '\\''
     """
-    p[0] = ast.Transpose(ast.Variable(p[1]))
+    p[0] = ast.Transpose(ast.Variable(p[1], p.lexer.lineno))
 
 
 def p_transpose_expression(p):
@@ -193,14 +193,14 @@ def p_math_expression(p):
                | expression DOTMUL expression
                | expression DOTSUB expression
     """
-    p[0] = ast.BinaryExpression(p[1], p[2], p[3])
+    p[0] = ast.BinaryExpression(p[1], p[2], p[3], p.lexer.lineno)
 
 
 def p_fun_expression(p):
     """
     expression : function '(' expression ')'
     """
-    p[0] = ast.Function(p[1], p[3])
+    p[0] = ast.Function(p[1], p[3], p.lexer.lineno)
 
 
 def p_function(p):
@@ -216,28 +216,28 @@ def p_print(p):
     """
     keyword : PRINT sequence
     """
-    p[0] = ast.Print(p[2])
+    p[0] = ast.Print(p[2], p.lexer.lineno)
 
 
 def p_break(p):
     """
     keyword : BREAK
     """
-    p[0] = ast.Break()
+    p[0] = ast.Break(p.lexer.lineno)
 
 
 def p_continue(p):
     """
     keyword : CONTINUE
     """
-    p[0] = ast.Continue()
+    p[0] = ast.Continue(p.lexer.lineno)
 
 
 def p_return(p):
     """
     keyword : RETURN expression
     """
-    p[0] = ast.Return(p[2])
+    p[0] = ast.Return(p[2], p.lexer.lineno)
 
 
 def p_body(p):
@@ -258,14 +258,7 @@ def p_relation(p):
     """
     relation : expression comp_operator expression
     """
-    p[0] = ast.BinaryExpression(p[1], p[2], p[3])
-
-
-# def p_relation_expression(p):
-#     """
-#     expression : relation
-#     """
-#     p[0] = p[1]
+    p[0] = ast.BinaryExpression(p[1], p[2], p[3], p.lexer.lineno)
 
 
 def p_comp_operator(p):
