@@ -29,9 +29,6 @@ for op in ['+=', '-=', '*=', '/=']:
     op_type_map[(op, 'int', 'float')] = 'float'
     op_type_map[(op, 'float', 'int')] = 'float'
 
-forinitmap = dict()
-forinitmap[('int', 'int')] = 'int'
-
 
 class NodeVisitor(object):
 
@@ -57,7 +54,7 @@ class NodeVisitor(object):
 class TypeChecker(NodeVisitor):
 
     def __init__(self):
-        self.scope = SymbolTable(None, 'root')
+        self.scope = SymbolTable(None, 'Root')
 
     def visit_Program(self, node):
         print(node.program)
@@ -65,11 +62,26 @@ class TypeChecker(NodeVisitor):
             self.visit(node.program)
 
     def visit_Block(self, node):
-        self.scope = self.scope.push_scope('block')
+        self.scope = self.scope.push_scope('Block')
         self.visit(node.instruction)
 
     def visit_Instruction(self, node):
         self.visit(node.line)
+
+    def visit_Negation(self, node):
+        return node.operand
+
+    def visit_Transpose(self, node):
+        operand = self.visit(node.operand)
+        if operand.get('type') is not 'Tensor':
+            print(f'Transpose is possible only on Tensors Line: {node.operand.line}')
+            return operand
+        else:
+            result = {}
+            size = operand.get('size')
+            result['size'] = [size[1], size[0]]
+            result['type'] = operand.get('type')
+            return operand
 
     def visit_BinaryExpression(self, node):
         result = {}
@@ -160,9 +172,10 @@ class TypeChecker(NodeVisitor):
         self.scope = self.scope.pop_scope()
 
     def visit_For(self, node):
-        self.visit(node.cond)
+        range = self.visit(node.range)
         self.scope = self.scope.push_scope('For')
-        self.visit(node.while_block)
+        self.scope.put(node.id, range)
+        self.visit(node.for_block)
         self.scope = self.scope.pop_scope()
 
     def visit_Continue(self, node):
@@ -216,3 +229,15 @@ class TypeChecker(NodeVisitor):
             scopes.append(parent.name)
             parent = parent.parent
         return scopes
+
+    def visit_Range(self, node):
+        start = self.visit(node.start)
+        end = self.visit(node.end)
+
+        if end >= start:
+            print(f'Invalid Range parameters Line: {node.line}')
+
+        return start
+
+    def visit_Print(self, node):
+        self.visit(node.expression)

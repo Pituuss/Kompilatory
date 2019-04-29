@@ -52,8 +52,8 @@ class While(Node):
 
 
 class Range(Node):
-    def __init__(self, start, end):
-        super().__init__(self.__class__, [start, end], 'range')
+    def __init__(self, start, end, line):
+        super().__init__(self.__class__, [start, end], 'range', line=line)
         self.start = start
         self.end = end
 
@@ -144,8 +144,8 @@ class Instruction(Node):
 
 
 class Tensor(Node):
-    def __init__(self, rows,line):
-        super().__init__(self.__class__, [rows], "tensor",line=line)
+    def __init__(self, rows, line):
+        super().__init__(self.__class__, [rows], "tensor", line=line)
         self.rows = rows
 
     def __repr__(self):
@@ -192,8 +192,8 @@ class Seq(Node):
 
 
 class BinaryExpression(Node):
-    def __init__(self, left, op, right,line):
-        super().__init__(self.__class__, [left, right], op,line=line)
+    def __init__(self, left, op, right, line):
+        super().__init__(self.__class__, [left, right], op, line=line)
         self.op = op
         self.left = left
         self.right = right

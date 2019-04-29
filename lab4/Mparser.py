@@ -313,7 +313,7 @@ def p_range(p):
     """
     range : expression ':' expression
     """
-    p[0] = ast.Range(p[1], p[3])
+    p[0] = ast.Range(p[1], p[3], p.lexer.lineno)
 
 
 def p_assign_op(p):
