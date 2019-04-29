@@ -1,4 +1,4 @@
-import lab1_home.scanner as scanner
+import MLexer as scanner
 
 if __name__ == '__main__':
     file = open("example.file", "r")
