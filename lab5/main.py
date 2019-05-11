@@ -4,11 +4,12 @@ import MLexer
 import Mparser
 import AST
 import TreePrinter
+from Interpreter import Interpreter
 from TypeChecker import TypeChecker
 
 if __name__ == '__main__':
 
-    filename = sys.argv[1] if len(sys.argv) > 1 else "examples/opers.m"
+    filename = sys.argv[1] if len(sys.argv) > 1 else "./examples/run_me.m"
     try:
         file = open(filename, "r")
     except IOError:
@@ -17,10 +18,13 @@ if __name__ == '__main__':
 
     parser = Mparser.parser
     text = file.read()
+
     ast = parser.parse(text, lexer=MLexer.lexer)
+
     if parser.errorok:
         # print(ast.printTree())
         typeChecker = TypeChecker()
         typeChecker.visit(ast)
-    else:
-        print("error while parsing")
+        if typeChecker.success:
+            interpreter = Interpreter()
+            interpreter.visit(ast)

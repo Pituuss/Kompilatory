@@ -7,6 +7,9 @@ class Node(object):
         self.node_type = node_type
         self.leaf = leaf
 
+    def accept(self, visitor):
+        return visitor.visit(self)
+
 
 class Function(Node):
     def __init__(self, name, args, line):

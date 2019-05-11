@@ -86,9 +86,15 @@ def p_assign_expression(p):
 def p_variable(p):
     """
     variable : ID
-             | tensor_id
     """
     p[0] = ast.Variable(p[1], p.lexer.lineno)
+
+
+def p_variable_tensor_id(p):
+    """
+    variable : tensor_id
+    """
+    p[0] = p[1]
 
 
 def p_tensor_id(p):
